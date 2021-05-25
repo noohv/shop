@@ -20,7 +20,8 @@ class CreateFoodsTable extends Migration
             $table->string('description');
             $table->string('image');
             $table->decimal('price');
-            $table->foreignId('categories')->constrained();
+            $table->foreignId('category_id')->constrained();
+            $table->foreignId('restaurant_id')->constrained();
         });
     }
 

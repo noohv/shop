@@ -18,8 +18,8 @@ class CreateReviewsTable extends Migration
             $table->timestamps();
             $table->integer('rating');
             $table->string('review');
-            $table->foreignId('restaurant')->constrained();
-            $table->foreignId('user')->constrained();
+            $table->foreignId('restaurant_id')->constrained();
+            $table->foreignId('user_id')->constrained();
         });
     }
 

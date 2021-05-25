@@ -18,7 +18,8 @@ class CreateRestaurantsTable extends Migration
             $table->timestamps();
             $table->string('name')->unique();
             $table->string('description');
-            $table->foreignId('user')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->boolean('status')->default(1);
         });
     }
 
