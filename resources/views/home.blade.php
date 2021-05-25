@@ -6,13 +6,13 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 content-center">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="grid grid-flow-row grid-cols-3 gap-4">
+                    <div class="grid grid-flow-row items-center sm:grid-cols-1 lg:grid-cols-3 gap-4">
                     
                         @foreach($foods as $food)
-                        <div class="py-6">
+                        <div class="py-6 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                             <div class="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
                               <div class="w-1/3 bg-cover" style="background-image: url('{{$food->image}}')">
                               </div> 
@@ -44,7 +44,6 @@
                             </div>
                           </div>
                           @endforeach
-
                     </div>
                 </div>
             </div>

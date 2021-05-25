@@ -16,10 +16,10 @@ use Auth;
 class RestaurantController extends Controller
 {
     public function __construct() {
-        // // only Admins have access to the following methods
+        // only Admins have access to the following methods
         // $this->middleware('auth.admin')->only(['create', 'store']);
-        // // only authenticated users have access to the methods of the controller
-        // $this->middleware('auth');
+        // only authenticated users have access to the methods of the controller
+        $this->middleware('auth');
     }
 
     /**
