@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Review;
 use App\Models\Food;
 use App\Models\Restaurant;
+
 use Illuminate\Support\Facades\DB;
 use Auth;
 
@@ -16,10 +17,7 @@ use Auth;
 class RestaurantController extends Controller
 {
     public function __construct() {
-        // only Admins have access to the following methods
-        // $this->middleware('auth.admin')->only(['create', 'store']);
-        // only authenticated users have access to the methods of the controller
-        $this->middleware('auth');
+        $this->middleware('auth');  
     }
 
     /**

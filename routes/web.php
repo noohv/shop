@@ -20,9 +20,9 @@ Route::get('/', [FoodController::class, 'index'])->name('home');
 Route::resource('restaurant/create', BookController::class);
 
 
-Route::get('restaurant', [RestaurantController::class, 'show'])->name('restaurant');
-Route::get('restaurant/create', [RestaurantController::class, 'create']);
-Route::post('restaurant/create', [RestaurantController::class, 'store']);
+Route::get('restaurant', [RestaurantController::class, 'show'])->name('restaurant')->middleware('roles:1,2,3');
+Route::get('restaurant/create', [RestaurantController::class, 'create'])->middleware('roles:1,2,3');
+Route::post('restaurant/create', [RestaurantController::class, 'store'])->middleware('roles:1,2,3');
 
 Route::get('food/create', [FoodController::class, 'create'])->name('food');
 Route::post('food/created', [FoodController::class, 'store']);
