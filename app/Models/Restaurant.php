@@ -14,14 +14,14 @@ class Restaurant extends Model
     use HasFactory;
 
     public function user() {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function review() {
         return $this->hasMany(Review::class);
     }
 
-    public function food() {
+    public function foods() {
         return $this->hasMany(Food::class);
     }
 }

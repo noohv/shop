@@ -21,18 +21,6 @@ class RestaurantController extends Controller
         // // only authenticated users have access to the methods of the controller
         // $this->middleware('auth');
     }
-        
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $userID= Auth::id();
-        $restaurants = Restaurant::get();
-        return view('business', compact('restaurants', 'userID'));
-    }
 
     /**
      * Show the form for creating a new book.
@@ -41,16 +29,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-    //     $list = Author::all()->map(function ($author) {
-    //         $author->name = $author->first_name.' '.$author->last_name;
-    //         $author->value = $author->id;
-    //         return $author;
-	//    });
-    //     $genres = Genre::all()->map(function ($genre) {
-    //         $genre->value = $genre->id;
-    //         return $genre;
-	//    });
-    //     return view('book_create', compact('list','genres'));
+        return view('create_restaurant');
     }
 
     /**
@@ -83,10 +62,19 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         
-        // return view('book', compact('book','reserved'));
+        $userID = Auth::id();
+        $user = User::with('restaurant')->find($userID);
+        $restaurants = Restaurant::get();
+
+        if ($user->restaurant === null) {
+            return redirect()->action([RestaurantController::class, 'create']);
+        }
+        else {
+            return view('business', compact('restaurants', 'userID'));
+        }
     }
 
     /**

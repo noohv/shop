@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Restaurant;
+use Illuminate\Support\Facades\DB;
 
 class Food extends Model
 {
     use HasFactory;
+    protected $table = 'foods';
 
     public function restaurant() {
-        return $this->belongsTo(restaurant::class);
+        return $this->belongsTo(Restaurant::class);
     }
 
     public function category() {

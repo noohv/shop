@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            My Restaurant
+            {{ __('My Business') }}
         </h2>
     </x-slot>
 
@@ -11,9 +11,13 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     @foreach ( $restaurants as $restaurant )
                         @if($restaurant->user_id == $userID)
-                            <p class='text-lg'>
-                                <p>{{ $restaurant->name }} {{ $restaurant->description }} </p>
-                            </p>
+                                <h1 class="text-4xl"> <b>Name:</b>  "{{ $restaurant->name }}" </h1>
+                                <br>
+                                <p class="text-lg"><b>Description: </b>{{ $restaurant->description }}</p>
+                                <x-nav-link :href="route('food')">
+                                    {{ __('Create a food') }}
+                                </x-nav-link>
+            
                         @endif
                     @endforeach
                 </div>

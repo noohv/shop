@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\FoodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,19 +15,21 @@ use App\Http\Controllers\RestaurantController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [FoodController::class, 'index'])->name('home');
 
-Route::get('/business', function () {
-    return view('create_restaurant');
-})->name('business');
+Route::resource('restaurant/create', BookController::class);
 
+
+Route::get('restaurant', [RestaurantController::class, 'show'])->name('restaurant');
+Route::get('restaurant/create', [RestaurantController::class, 'create']);
 Route::post('restaurant/create', [RestaurantController::class, 'store']);
-Route::get('restaurant', [RestaurantController::class, 'index'])->name('restaurant');
+
+Route::get('food/create', [FoodController::class, 'create'])->name('food');
+Route::post('food/created', [FoodController::class, 'store']);
+
 
 Route::get('/dashboard', function () {
-    return view('home');
+    return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
