@@ -1,25 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
+use Auth;
 
 use Illuminate\Http\Request;
 
-
-use App\Models\User;
-use App\Models\Review;
-use App\Models\Food;
-use App\Models\Restaurant;
-use App\Http\Middleware\Roles;
-
-use Illuminate\Support\Facades\DB;
-use Auth;
-
-
-class RestaurantController extends Controller
+class AdminController extends Controller
 {
     public function __construct() {
-        $this->middleware('roles:1');
+        $this->middleware('roles:2');
         $this->middleware('auth');  
+    }
+
+    public function index() {
+        $users=User::paginate(1);
+        return view('allusers',compact('users'));
     }
 
     /**
@@ -29,7 +25,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('create_restaurant');
+        return view('create_category');
     }
 
     /**
@@ -46,14 +42,13 @@ class RestaurantController extends Controller
         );        
         $this->validate($request, $rules); 
         
-        $restaurant = new Restaurant();
-        $restaurant->name = $request->name;
-        $restaurant->description = $request->description;
-        $restaurant->user_id = Auth::id();
+        $category = new Category();
+        $category->name = $request->name;
+        $category->description = $request->description;
         
-        $restaurant->save();
+        $category->save();
 
-        return redirect()->route('home');        
+        return redirect()->route('category');        
     }
 
     /**
@@ -64,17 +59,7 @@ class RestaurantController extends Controller
      */
     public function show()
     {
-        
-        $userID = Auth::id();
-        $user = User::with('restaurant')->find($userID);
-        $restaurants = Restaurant::get();
-
-        if ($user->restaurant === null) {
-            return redirect()->action([RestaurantController::class, 'create']);
-        }
-        else {
-            return view('business', compact('restaurants', 'userID'));
-        }
+        //
     }
 
     /**
@@ -110,5 +95,4 @@ class RestaurantController extends Controller
     {
         //
     }
-
 }

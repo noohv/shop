@@ -2,7 +2,8 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <!-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> -->
+                <img class="block h-20 w-auto" src="https://img.icons8.com/fluent/96/000000/take-away-food.png"/>
             </a>
         </x-slot>
 

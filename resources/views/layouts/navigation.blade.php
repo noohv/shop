@@ -13,9 +13,22 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                @auth
+                    @if(Auth::user()->role == "1")
                     <x-nav-link :href="route('restaurant')" :active="request()->routeIs('restaurant')">
                         {{ __('Business') }}
                     </x-nav-link>
+                    @endif
+                    @if(Auth::user()->role == "2")
+                    <x-nav-link :href="route('category')" :active="request()->routeIs('category')">
+                        {{ __('Category') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('admin.users')" :active="request()->routeIs('admin.users')">
+                        {{ __('Users') }}
+                    </x-nav-link>
+                    @endif
+                @endauth
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Foods') }}
                     </x-nav-link>

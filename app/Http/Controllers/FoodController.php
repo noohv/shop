@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class FoodController extends Controller
 {
     public function index() {
-        $foods=Food::get();
+        $foods=Food::paginate(30);
         return view('home',compact('foods'));
     }
 

@@ -45,6 +45,10 @@
                           </div>
                           @endforeach
                     </div>
+                    <div class="paginate">
+                        {{$foods->render()}}
+                    </div>
+
                 </div>
             </div>
         </div>
