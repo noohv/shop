@@ -13,6 +13,11 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+        @if(Route::is('home') or Route::is('cart.show'))
+        <!--JQuery-->
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        @endif
+
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>

@@ -5,6 +5,7 @@ use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,12 @@ use App\Http\Controllers\FoodController;
 */
 
 Route::get('/', [FoodController::class, 'index'])->name('home');
+
+require __DIR__.'/auth.php';
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::resource('restaurant/create', BookController::class);
 
@@ -35,8 +42,5 @@ Route::post('category/created', [CategoryController::class, 'store']);
 
 Route::get('admin/users', [AdminController::class, 'index'])->name('admin.users');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
+Route::post('food/reserve', [CartController::class, 'addOrRemoveFromCart'])->name('food.reserve');
+Route::get('food/reserve', [CartController::class, 'showCart'])->name('cart.show');

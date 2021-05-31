@@ -38,7 +38,9 @@
                                 </div>
                                 <div class="flex item-center justify-between mt-3">
                                   <h1 class="text-gray-700 font-bold text-xl">${{$food->price}}</h1>
-                                  <button class="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">Add to Card</button>
+                                  <x-button food-id="{{$food->id}}" class="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded btn-reserve">
+                                    Add To Cart
+                                  </x-button>
                                 </div>
                               </div>
                             </div>
@@ -48,9 +50,29 @@
                     <div class="paginate">
                         {{$foods->render()}}
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+      $(document).ready(function () {
+          $(".btn-reserve").on('click', function (e) {
+              var url = "{{ route('food.reserve') }}";
+              var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+              $.ajax({
+                  type: "POST",
+                  url: url,
+                  data: { id: $(e.target).attr('food-id'), _token: CSRF_TOKEN },
+                  success: function (data) {
+                    console.log('added:', data);
+
+                  },
+                  error: function (data) {
+                    console.log('Error:', data);
+                  }
+              });
+          })
+      });        
+          </script>        
 </x-app-layout>

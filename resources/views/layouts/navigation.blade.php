@@ -29,6 +29,10 @@
                     </x-nav-link>
                     @endif
                 @endauth
+                    <x-nav-link :href="route('cart.show')" :active="request()->routeIs('cart.show')">
+                        {{ __('Shopping Cart') }}
+                        
+                    </x-nav-link>
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Foods') }}
                     </x-nav-link>
