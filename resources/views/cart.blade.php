@@ -28,9 +28,14 @@
             </div>
             
             <div class="flex items-end justify-end mt-4">
-                <a id="checkout" href="{{route('home')}}" class="ml-4">
-                    {{_('Checkout')}}
-                </a>    
+                <form method="POST" action="{{ action([App\Http\Controllers\OrderController::class, 'store']) }}">
+                    @csrf
+                    <div class="flex items-center justify-start mt-4">
+                        <x-button class="ml-4">
+                            Order
+                        </x-button>
+                    </div>
+                </form>   
             </div>
 
     </div>

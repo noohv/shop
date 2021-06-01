@@ -35,8 +35,8 @@ Route::get('restaurants', [RestaurantController::class,'index'])->name('restaura
 Route::get('restaurant/create', [RestaurantController::class, 'create']);
 Route::post('restaurant/create', [RestaurantController::class, 'store']);
 
-Route::get('food/create', [FoodController::class, 'create'])->name('food')->middleware('roles:1');
-Route::post('food/created', [FoodController::class, 'store'])->middleware('roles:1');
+Route::get('food/create', [FoodController::class, 'create'])->name('food')->middleware('roles:1,2');
+Route::post('food/created', [FoodController::class, 'store'])->middleware('roles:1,2');
 
 Route::get('category', [CategoryController::class, 'index'])->name('category');
 Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
@@ -46,3 +46,5 @@ Route::get('admin/users', [AdminController::class, 'index'])->name('admin.users'
 
 Route::post('cart', [CartController::class, 'addOrRemoveFromCart'])->name('food.reserve');
 Route::get('cart', [CartController::class, 'showCart'])->name('cart.show');
+
+Route::post('order', [OrderController::class, 'store']);

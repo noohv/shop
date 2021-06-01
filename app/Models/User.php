@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 use App\Models\Role;
 use App\Models\Restaurant;
+use App\Models\Order;
 
 class User extends Authenticatable
 {
@@ -46,5 +47,9 @@ class User extends Authenticatable
 
     public function restaurant() {
         return $this->hasOne(Restaurant::class);
+    }
+
+    public function orders() {
+        return $this->hasMany(Order::class);
     }
 }

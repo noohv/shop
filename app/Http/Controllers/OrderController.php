@@ -3,50 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\Order;
+use App\Models\Food;
 
 class OrderController extends Controller
 {
     public function __construct() {
-        $this->middleware('roles:2');
         $this->middleware('auth');  
     }
 
     public function index() {
-        $categories=Category::paginate(5);
-        return view('categories',compact('categories'));
+        //
     }
 
-    /**
-     * Show the form for creating a new book.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('create_category');
-    }
-
-    /**
-     * Store a newly created book in the database.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $rules = array(
-            'name' => 'required|string|min:2|max:191',
-            'description' => 'required|string',
-        );        
-        $this->validate($request, $rules); 
-        
-        $category = new Category();
-        $category->name = $request->name;
-        $category->description = $request->description;
-        
-        $category->save();
+        if(session()->has('foods')){
+            foreach(session()->get('foods') as $food) {
+                $price = Food::find($food)->price;
 
-        return redirect()->route('category');        
+                $order = new Order();
+                $order->user_id = Auth::id();
+                $order->foods_id = $food;
+                $order->quantity = 1;
+                $order->price = $price;
+
+                $order->save();
+            }
+        }
+
+        session()->forget('foods'); // Removes books from reserved
+        return redirect()->route('home');        
     }
 
     /**

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Restaurant;
+use App\Models\Order;
 use Illuminate\Support\Facades\DB;
 
 class Food extends Model
@@ -19,6 +20,10 @@ class Food extends Model
 
     public function category() {
         return $this->hasOne(Category::class);
+    }
+
+    public function orders() {
+        return $this->hasMany(Order::class);
     }
 
 }
