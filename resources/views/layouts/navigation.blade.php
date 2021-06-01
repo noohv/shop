@@ -28,6 +28,9 @@
                         {{ __('Users') }}
                     </x-nav-link>
                     @endif
+                    <x-nav-link :href="route('orders.client')" :active="request()->routeIs('orders.client')">
+                        {{ __('My Orders') }}
+                    </x-nav-link>
                 @endauth
                 <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                     {{ __('Foods') }}

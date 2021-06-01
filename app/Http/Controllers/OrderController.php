@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Food;
 
 class OrderController extends Controller
@@ -14,22 +15,30 @@ class OrderController extends Controller
     }
 
     public function index() {
-        //
+        $orders = Order::where("user_id", "=", Auth::id())->paginate(10);
+        $orderitems = OrderItem::get();
+        return view('user_orders',compact('orders','orderitems'));
     }
 
     public function store(Request $request)
     {
         if(session()->has('foods')){
+            $order = new Order();
+            $order->user_id = Auth::id();
+            $order->total = 100;
+            $order->save();
+            
+
             foreach(session()->get('foods') as $food) {
                 $price = Food::find($food)->price;
 
-                $order = new Order();
-                $order->user_id = Auth::id();
-                $order->foods_id = $food;
-                $order->quantity = 1;
-                $order->price = $price;
+                $orderitem = new OrderItem();
+                $orderitem->order_id = $order->id;
+                $orderitem->foods_id = $food;
+                $orderitem->quantity = 1;
+                $orderitem->price = $price;
 
-                $order->save();
+                $orderitem->save();
             }
         }
 

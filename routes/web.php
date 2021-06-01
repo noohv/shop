@@ -48,3 +48,6 @@ Route::post('cart', [CartController::class, 'addOrRemoveFromCart'])->name('food.
 Route::get('cart', [CartController::class, 'showCart'])->name('cart.show');
 
 Route::post('order', [OrderController::class, 'store']);
+
+Route::get('myorders', [OrderController::class, 'index'])->name('orders.client');
+
