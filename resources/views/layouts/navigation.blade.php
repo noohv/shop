@@ -14,10 +14,10 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 @auth
-                    @if(Auth::user()->role == "1")
-                    <x-nav-link :href="route('restaurant')" :active="request()->routeIs('restaurant')">
+                    @if(Auth::user()->role == "1" || Auth::user()->role == "2")
+                    {{-- <x-nav-link :href="route('restaurant')" :active="request()->routeIs('restaurant')">
                         {{ __('Business') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
                     @endif
                     @if(Auth::user()->role == "2")
                     <x-nav-link :href="route('category')" :active="request()->routeIs('category')">
@@ -29,13 +29,19 @@
                     </x-nav-link>
                     @endif
                 @endauth
-                    <x-nav-link :href="route('cart.show')" :active="request()->routeIs('cart.show')">
-                        {{ __('Shopping Cart') }}
-                        
-                    </x-nav-link>
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('Foods') }}
-                    </x-nav-link>
+                <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                    {{ __('Foods') }}
+                </x-nav-link>
+
+                <x-nav-link :href="route('restaurants')" :active="request()->routeIs('restaurants')">
+                    {{ __('Restaurants') }}
+                </x-nav-link>
+
+                <x-nav-link :href="route('cart.show')" :active="request()->routeIs('cart.show')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </x-nav-link>
                 </div>
             </div>
 

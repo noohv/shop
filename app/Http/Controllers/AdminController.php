@@ -14,7 +14,7 @@ class AdminController extends Controller
     }
 
     public function index() {
-        $users=User::paginate(1);
+        $users=User::paginate(15);
         return view('allusers',compact('users'));
     }
 
@@ -28,28 +28,6 @@ class AdminController extends Controller
         return view('create_category');
     }
 
-    /**
-     * Store a newly created book in the database.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $rules = array(
-            'name' => 'required|string|min:2|max:191',
-            'description' => 'required|string',
-        );        
-        $this->validate($request, $rules); 
-        
-        $category = new Category();
-        $category->name = $request->name;
-        $category->description = $request->description;
-        
-        $category->save();
-
-        return redirect()->route('category');        
-    }
 
     /**
      * Display the specified resource.

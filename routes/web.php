@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +28,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('restaurant/create', BookController::class);
+Route::resource('restaurant', RestaurantController::class);
 
+Route::get('restaurants', [RestaurantController::class,'index'])->name('restaurants');
 
-Route::get('restaurant', [RestaurantController::class, 'show'])->name('restaurant');
 Route::get('restaurant/create', [RestaurantController::class, 'create']);
 Route::post('restaurant/create', [RestaurantController::class, 'store']);
 
@@ -42,5 +44,5 @@ Route::post('category/created', [CategoryController::class, 'store']);
 
 Route::get('admin/users', [AdminController::class, 'index'])->name('admin.users');
 
-Route::post('food/reserve', [CartController::class, 'addOrRemoveFromCart'])->name('food.reserve');
-Route::get('food/reserve', [CartController::class, 'showCart'])->name('cart.show');
+Route::post('cart', [CartController::class, 'addOrRemoveFromCart'])->name('food.reserve');
+Route::get('cart', [CartController::class, 'showCart'])->name('cart.show');
