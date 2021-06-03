@@ -31,11 +31,11 @@ class CartController extends Controller
     }    
 
 
-    public function removeFromCart(Request $request) {
-        $foods = session()->pull('foods');
-        unset($foods[array_search($request->id, $foods)]);
-        session()->put('foods', $foods);
+    // public function removeFromCart(Request $request) {
+    //     $foods = session()->pull('foods');
+    //     unset($foods[array_search($request->id, $foods)]);
+    //     session()->put('foods', $foods);
 
-        return response()->json(session()->get('foods'), 200);
-    }
+    //     return response()->json(session()->get('foods'), 200);
+    // }
 }
