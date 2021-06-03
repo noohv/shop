@@ -9,7 +9,7 @@ class CartController extends Controller
 {
     public function addOrRemoveFromCart(Request $request) 
     {
-        if (session()->has('foods') && in_array($request->id, session()->get('foods'))) { // if book is already in the cart, remove book from cart
+        if (session()->has('foods') && in_array($request->id, session()->get('foods'))) {
             $foods = session()->pull('foods');
             unset($foods[array_search($request->id, $foods)]);
             session()->put('foods', $foods);
@@ -29,13 +29,4 @@ class CartController extends Controller
         else
             return view('cart');            
     }    
-
-
-    // public function removeFromCart(Request $request) {
-    //     $foods = session()->pull('foods');
-    //     unset($foods[array_search($request->id, $foods)]);
-    //     session()->put('foods', $foods);
-
-    //     return response()->json(session()->get('foods'), 200);
-    // }
 }
