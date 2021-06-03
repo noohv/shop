@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('restaurant/create', BookController::class);
+Route::resource('restaurant/create', RestaurantController::class);
 Route::resource('restaurant', RestaurantController::class);
 
 Route::get('restaurants', [RestaurantController::class,'index'])->name('restaurants');
@@ -44,9 +44,10 @@ Route::post('category/created', [CategoryController::class, 'store']);
 
 Route::get('admin/users', [AdminController::class, 'index'])->name('admin.users');
 
-Route::post('cart', [CartController::class, 'addOrRemoveFromCart'])->name('food.reserve');
-Route::get('cart', [CartController::class, 'showCart'])->name('cart.show');
+Route::get('/cart/total-price', [CartController::class,'getTotalPrice']);
+Route::apiResource('cart', CartController::class);
 
+Route::get('order', [OrderController::class, 'create'])->name('order.create');
 Route::post('order', [OrderController::class, 'store']);
 
 Route::get('myorders', [OrderController::class, 'index'])->name('orders.client');

@@ -11,13 +11,17 @@ use App\Models\Food;
 class OrderController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth');  
+        $this->middleware('auth');
     }
 
     public function index() {
         $orders = Order::where("user_id", "=", Auth::id())->paginate(10);
         // $orderitems = OrderItem::get();
         return view('user_orders',compact('orders'));
+    }
+
+    public function create() {
+        return view('checkout');
     }
 
     public function store(Request $request)
@@ -44,7 +48,7 @@ class OrderController extends Controller
             }
         }
         session()->forget('foods');
-        return redirect()->route('home');        
+        return redirect()->route('home');
 
     }
 

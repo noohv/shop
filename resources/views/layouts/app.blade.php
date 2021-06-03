@@ -13,7 +13,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-        @if(Route::is('home') or Route::is('cart.show'))
+        @if(Route::is('home') or Route::is('cart.index'))
         <!--JQuery-->
         <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
         @endif
@@ -36,6 +36,8 @@
             <main>
                 {{ $slot }}
             </main>
+
         </div>
     </body>
 </html>
+
