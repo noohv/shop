@@ -16,8 +16,8 @@ class OrderController extends Controller
 
     public function index() {
         $orders = Order::where("user_id", "=", Auth::id())->paginate(10);
-        // $orderitems = OrderItem::get();
-        return view('user_orders',compact('orders'));
+        $orderitems = OrderItem::get();
+        return view('user_orders',compact('orders','orderitems'));
     }
 
     public function store(Request $request)
@@ -35,15 +35,15 @@ class OrderController extends Controller
                 $orderitem = new OrderItem();
                 $orderitem->order_id = $order->id;
                 $orderitem->foods_id = $food;
-                $orderitem->quantity = $request->quantity;
+                $orderitem->quantity = 1;
                 $orderitem->price = $price;
 
                 $orderitem->save();
             }
-            session()->forget('foods'); // Removes foods from reserved
-            return redirect()->route('home');        
         }
 
+        session()->forget('foods'); // Removes books from reserved
+        return redirect()->route('home');        
     }
 
     /**
