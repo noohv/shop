@@ -17,7 +17,10 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('user_id')->constrained();
-            $table->decimal('total');
+            $table->string('city');
+            $table->string('street');
+            $table->string('number');
+            $table->boolean('status')->default(0);
         });
     }
 
