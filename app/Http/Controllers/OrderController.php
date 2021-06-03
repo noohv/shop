@@ -22,14 +22,12 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        if(session()->get('foods')){
+        if(session()->has('foods')){
             $order = new Order();
             $order->user_id = Auth::id();
-            $order->city = $request->city;
-            $order->street = $request->street;
-            $order->number = $request->number;
-            $order->status = 0;
+            $order->total = 100;
             $order->save();
+            
 
             foreach(session()->get('foods') as $food) {
                 $price = Food::find($food)->price;
@@ -42,9 +40,9 @@ class OrderController extends Controller
 
                 $orderitem->save();
             }
+            session()->forget('foods'); // Removes foods from reserved
+            return redirect()->route('home');        
         }
-        session()->forget('foods');
-        return redirect()->route('home');        
 
     }
 

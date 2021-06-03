@@ -17,7 +17,7 @@
                         {{$food->name}}                   
                         $ {{$food->price}}
 
-                        <a class="btn-reserve cursor-pointer inline-block" food-id="{{ $food->id }}">
+                        <a class="btn-reserve cursor-pointer" food-id="{{ $food->id }}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
@@ -26,7 +26,7 @@
                         <div class="inline-block">
                             <x-label for="quantity" value="Quantity" />
                 
-                            <x-input id="quantity" class="block mt-1 w-10px" type="number" name="quantity" required :value="old('quantity}')"/>
+                            <x-input id="quantity" class="block mt-1 w-10px" type="number" name="quantity" required :value="old('quantity')"/>
                 
                             <x-validation-error class="mb-4" :errors="$errors" title="quantity"/>
                         </div>
@@ -34,28 +34,6 @@
                         <br>                  
                     </div>
                 @endforeach
-                Address:
-                <div>
-                    <x-label for="city" value="City" />
-        
-                    <x-input id="city" class="block mt-1 w-10px" type="text" name="city" required :value="old('city')"/>
-        
-                    <x-validation-error class="mb-4" :errors="$errors" title="city"/>
-                </div>
-                <div>
-                    <x-label for="street" value="Street" />
-        
-                    <x-input id="street" class="block mt-1 w-10px" type="text" name="street" required :value="old('street')"/>
-        
-                    <x-validation-error class="mb-4" :errors="$errors" title="city"/>
-                </div>
-                <div>
-                    <x-label for="number" value="Number" />
-        
-                    <x-input id="number" class="block mt-1 w-10px" type="number" name="number" required :value="old('number')"/>
-        
-                    <x-validation-error class="mb-4" :errors="$errors" title="number"/>
-                </div>
                 @endisset
                 <br>
                 </div>
@@ -90,7 +68,7 @@
                     url: url,
                     data: { id: btn.attr('food-id'), _token: CSRF_TOKEN },
                     success: function (data) {
-                    btn.closest('div').remove();
+                        btn.closest('div').remove();
                         checkFoodCount();
                     },
                     error: function (data) {
