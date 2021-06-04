@@ -54,25 +54,4 @@
             </div>
         </div>
     </div>
-{{--
-    <script>
-      $(document).ready(function () {
-          $(".btn-reserve").on('click', function (e) {
-              var url = "{{ route('food.reserve') }}";
-              var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-              $.ajax({
-                  type: "POST",
-                  url: url,
-                  data: { id: $(e.target).attr('food-id'), _token: CSRF_TOKEN },
-                  success: function (data) {
-                    console.log('added:', data);
-
-                  },
-                  error: function (data) {
-                    console.log('Error:', data);
-                  }
-              });
-          })
-      });
-          </script>         --}}
 </x-app-layout>
