@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Food;
@@ -26,7 +27,7 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        if(session()->get('foods')){
+        if(!Cart::isEmpty()){
             $order = new Order();
             $order->user_id = Auth::id();
             $order->city = $request->city;
@@ -35,21 +36,18 @@ class OrderController extends Controller
             $order->status = 0;
             $order->save();
 
-            foreach(session()->get('foods') as $food) {
-                $price = Food::find($food)->price;
-
+            foreach(Cart::getContent() as $item) {
                 $orderitem = new OrderItem();
                 $orderitem->order_id = $order->id;
-                $orderitem->foods_id = $food;
-                $orderitem->quantity = $request->quantity;
-                $orderitem->price = $price;
+                $orderitem->foods_id = $item->id;
+                $orderitem->quantity = $item->quantity;
+                $orderitem->price = $item->price;
 
                 $orderitem->save();
             }
         }
-        session()->forget('foods');
+        Cart::clear();
         return redirect()->route('home');
-
     }
 
     /**

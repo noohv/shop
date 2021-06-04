@@ -4,34 +4,36 @@
             {{ __('Create Category') }}
         </h2>
     </x-slot>
-    
+
     <x-form>
-    <form method="POST" action="{{ action([App\Http\Controllers\CategoryController::class, 'store']) }}">
-        @csrf
+        <form method="POST" action="{{ action([App\Http\Controllers\CategoryController::class, 'store']) }}">
+            @csrf
 
-        <!-- First Name -->
-        <div>
-            <x-label for="name" value="Name of Category" />
+            <!-- First Name -->
+            <div>
+                <x-label for="name" value="Name of Category" />
 
-            <x-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus :value="old('name')"/>
-            
-            <x-validation-error class="mb-4" :errors="$errors" title="name"/>
-        </div>
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus
+                    :value="old('name')" />
 
-        <!-- Last Name -->
-        <div>
-            <x-label for="description" value="Description" />
+                <x-validation-error class="mb-4" :errors="$errors" title="name" />
+            </div>
 
-            <x-input id="description" class="block mt-1 w-full" type="text" name="description" required :value="old('description')"/>
+            <!-- Last Name -->
+            <div>
+                <x-label for="description" value="Description" />
 
-            <x-validation-error class="mb-4" :errors="$errors" title="description"/>
-        </div>
+                <x-input id="description" class="block mt-1 w-full" type="text" name="description" required
+                    :value="old('description')" />
 
-        <div class="flex items-center justify-end mt-4">
-            <x-button class="ml-4">
-                Create
-            </x-button>
-        </div>
-    </form>
+                <x-validation-error class="mb-4" :errors="$errors" title="description" />
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                <x-button class="ml-4">
+                    Create
+                </x-button>
+            </div>
+        </form>
     </x-form>
 </x-app-layout>

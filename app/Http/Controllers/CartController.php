@@ -21,13 +21,9 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
-        // $request->validate([
-        //     // 'id' => 'required',
-        //     // 'name' => 'required',
-        //     // 'price' => 'required',
-        //     // 'quantity' => 'required'
-        // ]);
+        $request->validate([
+            'quantity' => 'required|min:1|max:5'
+        ]);
 
         $food = Food::findOrFail($request->id);
 
@@ -39,8 +35,7 @@ class CartController extends Controller
             'price' => $request->price,
             'associatedModel' => $food
         ));
-        // dd('Hello World');
-        return redirect()->route('home');
+        return redirect()->route('home')->with('message','Item added!');
     }
 
     public function update() {
