@@ -49,11 +49,11 @@
                                             style="background-image: url('{{ $food->image }}')">
                                         </div>
                                         <div class="w-2/3 p-4">
-                                            <input type="hidden" name="id" value="{{ $food->id }}" hidden>
-                                            <input type="hidden" name="name" value="{{ $food->name }}" hidden>
-                                            <input type="hidden" name="description" value="{{ $food->description }}"
+                                            <input type="hidden" class="id" name="id" value="{{ $food->id }}" hidden>
+                                            <input type="hidden" class="name" name="name" value="{{ $food->name }}" hidden>
+                                            <input type="hidden" class="description" name="description" value="{{ $food->description }}"
                                                 hidden>
-                                            <input type="hidden" name="price" value="{{ $food->price }}" hidden>
+                                            <input type="hidden" class="price" name="price" value="{{ $food->price }}" hidden>
 
                                             <h1 class="text-gray-900 font-bold text-2xl">{{ $food->name }}</h1>
                                             <p class="mt-2 text-gray-600 text-sm">{{ $food->description }}</p>
@@ -68,7 +68,7 @@
                                             </div>
 
 
-                                                <x-button type="submit" food-id="{{ $food->id }}"
+                                                <x-button class="addCart" type="submit" food-id="{{ $food->id }}"
                                                     class="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded btn-reserve">
                                                     Add To Cart
                                                 </x-button>

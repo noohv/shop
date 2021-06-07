@@ -8,8 +8,8 @@
     <div class="flex justify-center my-6 ">
         <div
             class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg sm:rounded-lg pin-r pin-y md:w-4/5 lg:w-4/5">
-            <div class="flex-1">
-                <table class="w-full text-sm lg:text-base" cellspacing="0">
+            <div class="flex-1" >
+                <table  class="w-full text-sm lg:text-base" cellspacing="0">
                     <thead>
                         <tr class="h-12 uppercase">
                             <th class="hidden md:table-cell"></th>
@@ -22,7 +22,7 @@
                             <th class="text-right">Total price</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="data">
                         @if (!Cart::isEmpty())
                             @foreach ($items as $item)
                                 <tr>
@@ -33,18 +33,13 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="#">
                                             <p class="mb-2 md:ml-4">{{ $item->name }}</p>
-                                            <form class="inline-block" method="POST"
-                                                action="{{ route('cart.destroy', ['cart' => $item->id]) }}">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button id="{{ $item->id }}" type="submit"
-                                                    class="text-gray-700 md:ml-4">
+
+
+                                                <button data-item_id="{{ $item->id }}" type="submit"
+                                                    class="text-gray-700 md:ml-4 btnItemDelete">
                                                     <small>(Remove item)</small>
                                                 </button>
-                                            </form>
-                                        </a>
                                     </td>
                                     <td class="justify-center md:justify-end md:flex mt-6">
                                         <div class="w-20 h-10">
@@ -120,6 +115,22 @@
         </div>
     </div>
     </div>
-
     </div>
+    <script>
+        $(document).on('click','.btnItemDelete', function(){
+            var item_id = $(this).data('item_id');
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                data:{"item_id":item_id, _token:CSRF_TOKEN },
+                url:'/cart-item-delete',
+                type:'post',
+                success:function(response){
+                    console.log('deleted');
+                    $('.data').load(response.item);
+                },error:function() {
+                    console.log('Error');
+                }
+            });
+        });
+    </script>
 </x-app-layout>

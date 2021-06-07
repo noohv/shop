@@ -44,8 +44,11 @@ Route::post('category/created', [CategoryController::class, 'store']);
 
 Route::get('admin/users', [AdminController::class, 'index'])->name('admin.users');
 
-Route::get('/cart/total-price', [CartController::class,'getTotalPrice']);
-Route::apiResource('cart', CartController::class);
+// Route::apiResource('cart', CartController::class);
+Route::get('cart', [CartController::class,'index'])->name('cart.index');
+Route::post('cart', [CartController::class,'store']);
+Route::post('/cart-item-delete', [CartController::class,'destroy']);
+
 
 Route::get('order', [OrderController::class, 'create'])->name('order.create');
 Route::post('order', [OrderController::class, 'store']);

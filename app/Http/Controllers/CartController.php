@@ -5,19 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Food;
 use Cart;
+use View;
 
 class CartController extends Controller
 {
     public function index()
     {
         $items =\Cart::getContent();
-        $foods = Cart::getContent();
-        return view('cart',compact('foods','items'));
+        return view('cart')->with(compact('items'));
     }
 
-    public function getTotalPrice() {
-        return Cart::getTotal();
-    }
 
     public function store(Request $request)
     {
@@ -42,9 +39,15 @@ class CartController extends Controller
 
     }
 
-    public function destroy($id) {
-        Cart::remove($id);
-        return redirect()->back();
+    public function destroy(Request $request) {
+        if($request->ajax()) {
+            $data = $request->all();
+            Cart::remove($data);
+            $items =\Cart::getContent();
+            return response()->json([
+                'items'=>$items
+            ]);
+        }
     }
 
     public function destroyAll() {
