@@ -33,6 +33,7 @@ class OrderController extends Controller
             $order->city = $request->city;
             $order->street = $request->street;
             $order->number = $request->number;
+            $order->total = Cart::getTotal();
             $order->status = 0;
             $order->save();
 

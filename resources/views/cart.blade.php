@@ -65,15 +65,15 @@
                                     </td>
                                 </tr>
                             @endforeach
-                        @else
-                            <tr>
-                                <td>Shopping cart is empty :(</td>
-                            </tr>
                         @endif
                         <br>
                     </tbody>
                 </table>
-
+                @if(Cart::isEmpty())
+                    <div class="flex w-full justify-center">
+                        <div class="text-lg font-extrabold">The cart is empty! :(</div>
+                    </div>
+                @endif
 
                 <hr class="pb-6 mt-6">
                 <div class="lg:px-2 lg:w-1/2 m-auto">

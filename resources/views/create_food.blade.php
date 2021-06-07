@@ -43,7 +43,7 @@
             <div>
                 <x-label for="price" value="Price" />
 
-                <x-input id="price" class="block mt-1 w-full" type="number" name="price" required
+                <x-input id="price" class="block mt-1 w-full" type="number" name="price" step=".01" required
                     :value="old('price')" />
 
                 <x-validation-error class="mb-4" :errors="$errors" title="price" />

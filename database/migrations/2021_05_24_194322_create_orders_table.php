@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('city');
             $table->string('street');
             $table->string('number');
+            $table->decimal('total');
             $table->boolean('status')->default(0);
         });
     }

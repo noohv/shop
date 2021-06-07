@@ -19,7 +19,7 @@ class CreateOrderItemsTable extends Migration
             $table->foreignId('order_id')->constrained();
             $table->foreignId('foods_id')->constrained();
             $table->integer('quantity');
-            $table->integer('price');
+            $table->decimal('price');
         });
     }
 

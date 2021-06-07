@@ -34,16 +34,16 @@
     @endif
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 content-center">
+        <div class="max-w-8xl mx-auto sm:px-6 lg:px-8 content-center">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="grid grid-flow-row items-center sm:grid-cols-1 lg:grid-cols-3 gap-4">
+                    <div class="grid grid-cols-3 items-center justify-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
                         @foreach ($foods as $food)
                             <form method="POST" action="/cart">
                                 @csrf
                                 <div
-                                    class="py-6 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                                    class="py-6  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                                     <div class="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
                                         <div class="w-1/3 bg-cover"
                                             style="background-image: url('{{ $food->image }}')">
@@ -54,8 +54,6 @@
                                             <input type="hidden" name="description" value="{{ $food->description }}"
                                                 hidden>
                                             <input type="hidden" name="price" value="{{ $food->price }}" hidden>
-                                            <input type="hidden" name="image" value="{{ $food->image }}" hidden>
-
 
                                             <h1 class="text-gray-900 font-bold text-2xl">{{ $food->name }}</h1>
                                             <p class="mt-2 text-gray-600 text-sm">{{ $food->description }}</p>
@@ -63,8 +61,11 @@
 
                                             <div class="flex item-center justify-between mt-3">
                                                 <h1 class="text-gray-700 font-bold text-xl">${{ $food->price }}</h1>
-                                                <input type="number" name="quantity" value="1" min="1" max="5"
-                                                    class="h-20px w-30px rounded m-2">
+
+                                            </div>
+                                            <div class="w-24">
+                                                <input class="block rounded w-24 m-1 outline-none" type="number" name="quantity" value="1" min="1" max="5">
+                                            </div>
 
 
                                                 <x-button type="submit" food-id="{{ $food->id }}"
@@ -74,7 +75,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             </form>
                         @endforeach
                     </div>
@@ -90,10 +90,6 @@
             $('#errors').remove();
             $('#success').remove();
         }, 5000);
-
-        // setTimeout(function() {
-        //     $('#success').remove();
-        // }, 5000);
-
     </script>
+
 </x-app-layout>
