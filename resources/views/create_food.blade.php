@@ -11,7 +11,7 @@
 
             <!-- Name -->
             <div>
-                <x-label for="name" value="Name of the food" />
+                <x-label for="name" value="{{ __('Name') }}" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus
                     :value="old('name')" />
@@ -21,7 +21,7 @@
 
             <!-- Description -->
             <div>
-                <x-label for="description" value="Description" />
+                <x-label for="description" value="{{ __('Description') }}" />
 
                 <x-input id="description" class="block mt-1 w-full" type="text" name="description" required
                     :value="old('description')" />
@@ -31,7 +31,7 @@
 
             <!-- Image path -->
             <div>
-                <x-label for="image" value="Image" />
+                <x-label for="image" value="{{ __('Image') }}" />
 
                 <x-input id="image" class="block mt-1 w-full" type="text" name="image" required :value="old('image')" />
 
@@ -41,7 +41,7 @@
 
             <!-- Price -->
             <div>
-                <x-label for="price" value="Price" />
+                <x-label for="price" value="{{ __('Price') }}" />
 
                 <x-input id="price" class="block mt-1 w-full" type="number" name="price" step=".01" required
                     :value="old('price')" />
@@ -51,7 +51,7 @@
 
             <!-- Food Category -->
             <div>
-                <x-label for="category_id" value="Category" />
+                <x-label for="category_id" value="{{ __('Category') }}" />
 
                 <x-input id="category_id" class="block mt-1 w-full" type="number" name="category_id" required
                     :value="old('category_id')" />
@@ -61,7 +61,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-button class="ml-4">
-                    Create
+                    {{ __('Create') }}
                 </x-button>
             </div>
         </form>

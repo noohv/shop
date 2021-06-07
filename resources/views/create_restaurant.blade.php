@@ -11,7 +11,7 @@
 
             <!-- First Name -->
             <div>
-                <x-label for="name" value="Name of Restaurant" />
+                <x-label for="name" value="{{ __('Name') }}" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus
                     :value="old('name')" />

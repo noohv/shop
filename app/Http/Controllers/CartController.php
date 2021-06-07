@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Food;
 use Cart;
-use View;
+use Validator;
 
 class CartController extends Controller
 {
@@ -18,21 +18,19 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'quantity' => 'required|min:1|max:5'
-        ]);
+        if($request->ajax()) {
+            $food = Food::findOrFail($request->item_id);
 
-        $food = Food::findOrFail($request->id);
-
-        Cart::add(array(
-            'id' => $request->id,
-            'name' => $request->name,
-            'description' => $request->description,
-            'quantity' => $request->quantity,
-            'price' => $request->price,
-            'associatedModel' => $food
-        ));
-        return redirect()->route('home')->with('message','Item added!');
+            Cart::add(array(
+                'id' => $food->id,
+                'name' => $food->name,
+                'description' => $food->description,
+                'quantity' => $request->item_qty,
+                'price' => $food->price,
+                'associatedModel' => $food
+            ));
+            return redirect()->route('home');
+        }
     }
 
     public function update() {
@@ -40,14 +38,8 @@ class CartController extends Controller
     }
 
     public function destroy(Request $request) {
-        if($request->ajax()) {
-            $data = $request->all();
-            Cart::remove($data);
-            $items =\Cart::getContent();
-            return response()->json([
-                'items'=>$items
-            ]);
-        }
+        Cart::remove($request->id);
+        return redirect()->back();
     }
 
     public function destroyAll() {

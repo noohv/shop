@@ -14,19 +14,19 @@
                             <tr>
                                 <th scope="col"
                                     class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                                    Order No.
+                                    {{ __('Order No.') }}
                                 </th>
                                 <th scope="col"
                                     class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                                    Ordered at
+                                    {{ __('Ordered At') }}
                                 </th>
                                 <th scope="col"
                                     class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                                    Total
+                                    {{ __('Total') }}
                                 </th>
                                 <th scope="col"
                                     class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                                    See Details
+                                    {{ __('Details') }}
                                 </th>
                             </tr>
                         </thead>

@@ -1,13 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Cart
+            {{ __('Cart') }}
         </h2>
     </x-slot>
 
     <div class="flex justify-center my-6 ">
-        <div
-            class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg sm:rounded-lg pin-r pin-y md:w-4/5 lg:w-4/5">
+        <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg sm:rounded-lg pin-r pin-y md:w-4/5 lg:w-4/5">
             <div class="flex-1" >
                 <table  class="w-full text-sm lg:text-base" cellspacing="0">
                     <thead>
@@ -35,17 +34,21 @@
                                     <td>
                                             <p class="mb-2 md:ml-4">{{ $item->name }}</p>
 
-
-                                                <button data-item_id="{{ $item->id }}" type="submit"
-                                                    class="text-gray-700 md:ml-4 btnItemDelete">
+                                            <form class="inline-block" method="POST"
+                                            action="{{ route('cart.destroy') }}">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{$item->id}}">
+                                                <button id="{{ $item->id }}" type="submit"
+                                                class="text-gray-700 md:ml-4">
                                                     <small>(Remove item)</small>
                                                 </button>
+                                            </form>
                                     </td>
                                     <td class="justify-center md:justify-end md:flex mt-6">
                                         <div class="w-20 h-10">
-                                            <div class="relative flex flex-row w-full h-8">
+                                            <span class="text-sm lg:text-base font-medium">
                                                 {{ $item->quantity }}
-                                            </div>
+                                            </span>
                                         </div>
                                     </td>
                                     <td class="hidden text-right md:table-cell">
@@ -114,23 +117,5 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    <script>
-        $(document).on('click','.btnItemDelete', function(){
-            var item_id = $(this).data('item_id');
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            $.ajax({
-                data:{"item_id":item_id, _token:CSRF_TOKEN },
-                url:'/cart-item-delete',
-                type:'post',
-                success:function(response){
-                    console.log('deleted');
-                    $('.data').load(response.item);
-                },error:function() {
-                    console.log('Error');
-                }
-            });
-        });
-    </script>
+
 </x-app-layout>
