@@ -21,23 +21,23 @@
                     @endif
                     @if(Auth::user()->role == "2")
                     <x-nav-link :href="route('category')" :active="request()->routeIs('category')">
-                        {{ __('Category') }}
+                        {{ __('messages.Category') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('admin.users')" :active="request()->routeIs('admin.users')">
-                        {{ __('Users') }}
+                        {{ __('messages.Users') }}
                     </x-nav-link>
                     @endif
                     <x-nav-link :href="route('orders.client')" :active="request()->routeIs('orders.client')">
-                        {{ __('My Orders') }}
+                        {{ __('messages.my_orders') }}
                     </x-nav-link>
                 @endauth
                 <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                    {{ __('Foods') }}
+                    {{ __('messages.Foods') }}
                 </x-nav-link>
 
                 <x-nav-link :href="route('restaurants')" :active="request()->routeIs('restaurants')">
-                    {{ __('Restaurants') }}
+                    {{ __('messages.Restaurants') }}
                 </x-nav-link>
 
                 <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
@@ -62,7 +62,7 @@
                             </div>
                         </button>
                     </x-slot>
-                    
+
                     <x-slot name="content">
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -71,7 +71,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('messages.Log Out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -84,10 +84,10 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                     <div class="px-3 py-2 bg-gray-800  text-xs font-bold uppercase rounded">
-                         <a href="{{ route('login') }}" class="text-md text-white font-bold">Log in </a>
+                         <a href="{{ route('login') }}" class="text-md text-white font-bold">{{ __('messages.Log In') }}</a>
                     </div>
                     <div class="p-3">
-                        <a href="{{ route('register') }}" class="text-md text-gray-700"> Register</a>
+                        <a href="{{ route('register') }}" class="text-md text-gray-700"> {{ __('messages.Register') }}</a>
                     </div>
                 </button>
             </div>

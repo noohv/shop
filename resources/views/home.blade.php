@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Foods') }}
+            {{ __('messages.Foods') }}
         </h2>
     </x-slot>
 
@@ -34,7 +34,7 @@
 
 
                                         <div class="flex item-center justify-between mt-3">
-                                            <h1 class="text-gray-700 font-bold text-xl">${{ $food->price }}</h1>
+                                            <h1 class="text-gray-700 font-bold text-xl">{{ $food->price }}€</h1>
 
                                         </div>
                                         <div class="w-24">
@@ -43,7 +43,7 @@
 
 
                                             <button  type="submit" data-item_id="{{ $food->id }}" class="btnItemAdd px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded btn-reserve">
-                                                {{ __('Add to cart') }}
+                                                {{ __('messages.add_cart') }}
                                             </button>
 
                                         </div>
