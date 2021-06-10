@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Cart') }}
+            {{ __('messages.Cart') }}
         </h2>
     </x-slot>
 
@@ -13,13 +13,13 @@
                     <thead>
                         <tr class="h-12 uppercase">
                             <th class="hidden md:table-cell"></th>
-                            <th class="text-left">Product</th>
+                            <th class="text-left">{{ __('messages.Product') }}</th>
                             <th class="lg:text-right text-left pl-5 lg:pl-0">
-                                <span class="lg:hidden" title="Quantity">Qtd</span>
-                                <span class="hidden lg:inline">Quantity</span>
+                                <span class="lg:hidden" title="Quantity">{{ __('messages.qty') }}</span>
+                                <span class="hidden lg:inline">{{ __('messages.Quantity') }}</span>
                             </th>
-                            <th class="hidden text-right md:table-cell">Unit price</th>
-                            <th class="text-right">Total price</th>
+                            <th class="hidden text-right md:table-cell">{{ __('messages.Unit Price') }}</th>
+                            <th class="text-right">{{ __('messages.Total Price') }}</th>
                         </tr>
                     </thead>
                     <tbody class="data">
@@ -38,7 +38,7 @@
                                             <input type="hidden" name="id" value="{{ $item->id }}">
                                             <button id="{{ $item->id }}" type="submit"
                                                 class="text-gray-700 md:ml-4">
-                                                <small>(Remove item)</small>
+                                                <small>({{ __('messages.Remove Item') }})</small>
                                             </button>
                                         </form>
                                     </td>
@@ -67,21 +67,21 @@
                 </table>
                 @if (Cart::isEmpty())
                     <div class="flex w-full justify-center">
-                        <div class="text-lg font-extrabold">The cart is empty! :(</div>
+                        <div class="text-lg font-extrabold">{{ __('messages.Cart Empty') }}</div>
                     </div>
                 @endif
 
                 <hr class="pb-6 mt-6">
                 <div class="lg:px-2 lg:w-1/2 m-auto">
                     <div class="p-4 bg-gray-100 rounded-full">
-                        <h1 class="ml-2 font-bold uppercase">Order Details</h1>
+                        <h1 class="ml-2 font-bold uppercase">{{ __('messages.Order Details') }}</h1>
                     </div>
                     <div class="p-4">
                         <div class="flex justify-between pt-4 border-b">
                         </div>
                         <div class="flex justify-between pt-4 border-b">
                             <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                                Total
+                                {{ __('messages.Total') }}
                             </div>
                             <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
                                 {{ \Cart::getTotal() }}€
@@ -95,7 +95,7 @@
                                     <path fill="currentColor"
                                         d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z" />
                                 </svg>
-                                <span class="ml-2 mt-5px">Procceed to checkout</span>
+                                <span class="ml-2 mt-5px">{{ __('messages.Procceed Checkout') }}</span>
                             </button>
 
                         @else
@@ -107,7 +107,7 @@
                                     <path fill="currentColor"
                                         d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z" />
                                 </svg>
-                                <span class="ml-2 mt-5px">Procceed to checkout</span>
+                                <span class="ml-2 mt-5px">{{ __('messages.Procceed Checkout') }}</span>
                             </a>
 
                         @endif

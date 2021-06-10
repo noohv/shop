@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Food') }}
+            {{ __('messages.Create Food') }}
         </h2>
     </x-slot>
 
@@ -40,7 +40,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-button class="ml-4">
-                    Create
+                    {{ __('messages.Create') }}
                 </x-button>
             </div>
         </form>

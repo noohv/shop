@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FoodController;
@@ -55,3 +56,4 @@ Route::post('order', [OrderController::class, 'store']);
 
 Route::get('myorders', [OrderController::class, 'index'])->name('orders.client');
 
+Route::get('lang/{locale}',LanguageController::class);

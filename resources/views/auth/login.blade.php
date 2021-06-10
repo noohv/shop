@@ -7,6 +7,14 @@
             </a>
         </x-slot>
 
+        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+            @if (Route::has('register'))
+                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">{{ __('messages.Register') }}</a>
+            @endif
+            <a href="{{ url('lang/lv') }}" class="ml-4 text-sm text-gray-700 underline">LV</a>
+            <a href="{{ url('lang/en') }}" class="ml-4 text-sm text-gray-700 underline">EN</a>
+        </div>
+
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Categories') }}
+            {{ __('messages.Category') }}
         </h2>
     </x-slot>
 
@@ -14,7 +14,7 @@
                         <br>
                     @endforeach
                     <x-nav-link :href="route('category.create')" :active="request()->routeIs('category.create')">
-                        {{ __('Create Category') }}
+                        {{ __('messages.Create Category') }}
                     </x-nav-link>
                     <div class="paginate">
                         {{ $categories->render() }}
