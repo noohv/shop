@@ -12,6 +12,9 @@
                     <h1 class="text-4xl"> <b>{{ __('Name') }}:</b> {{ $restaurant->name }} </h1>
                     <br>
                     <p class="text-lg"><b>{{ __('Description') }}: </b>{{ $restaurant->description }}</p>
+                    @if (Auth::user()->role == "3" || (Auth::user()->role == "2" && $restaurant->user_id == Auth::id()))
+                        <a href="#">Edit Restaurant</a>
+                    @endif
                 </div>
             </div>
         </div>

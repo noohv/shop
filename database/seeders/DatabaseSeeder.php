@@ -16,25 +16,40 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+
+
+        DB::table('roles')->insert([
+            'name' => 'Client',
+        ]);
+
+        DB::table('roles')->insert([
+            'name' => 'Business',
+        ]);
+
+        DB::table('roles')->insert([
+            'name' => 'Admin',
+        ]);
+
+
         DB::table('users')->insert([
             'name' => 'vhoon',
             'email' => 'valters.huuns@gmail.com',
             'password' => Hash::make('valtersh26'),
-            'role' => 2,
+            'role' => 3,
         ]);
 
         DB::table('users')->insert([
             'name' => 'vhoon2',
             'email' => 'vhoon2@gmail.com',
             'password' => Hash::make('valtersh26'),
-            'role' => 1,
+            'role' => 2,
         ]);
 
         DB::table('users')->insert([
             'name' => 'vhoon3',
             'email' => 'vhoon3@gmail.com',
             'password' => Hash::make('valtersh26'),
-            'role' => 0,
+            'role' => 1,
         ]);
 
         DB::table('restaurants')->insert([
@@ -58,5 +73,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Potato',
             'description' => 'Potato!?',
         ]);
+
     }
 }

@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function __construct() {
-        $this->middleware('roles:2');
-        $this->middleware('auth');  
+        $this->middleware('roles:3');
+        $this->middleware('auth');
     }
 
     public function index() {

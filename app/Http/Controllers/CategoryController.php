@@ -16,8 +16,8 @@ use Auth;
 class CategoryController extends Controller
 {
     public function __construct() {
-        $this->middleware('roles:2');
-        $this->middleware('auth');  
+        $this->middleware('roles:3');
+        $this->middleware('auth');
     }
 
     public function index() {
@@ -46,16 +46,16 @@ class CategoryController extends Controller
         $rules = array(
             'name' => 'required|string|min:2|max:191',
             'description' => 'required|string',
-        );        
-        $this->validate($request, $rules); 
-        
+        );
+        $this->validate($request, $rules);
+
         $category = new Category();
         $category->name = $request->name;
         $category->description = $request->description;
-        
+
         $category->save();
 
-        return redirect()->route('category');        
+        return redirect()->route('category');
     }
 
     /**

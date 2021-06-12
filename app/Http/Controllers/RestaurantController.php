@@ -18,8 +18,7 @@ use Auth;
 class RestaurantController extends Controller
 {
     public function __construct() {
-        $this->middleware('roles:1,2');
-        $this->middleware('auth');  
+        $this->middleware('auth');
     }
 
     public function index() {
@@ -48,17 +47,17 @@ class RestaurantController extends Controller
         $rules = array(
             'name' => 'required|string|min:2|max:191',
             'description' => 'required|string',
-        );        
-        $this->validate($request, $rules); 
-        
+        );
+        $this->validate($request, $rules);
+
         $restaurant = new Restaurant();
         $restaurant->name = $request->name;
         $restaurant->description = $request->description;
         $restaurant->user_id = Auth::id();
-        
+
         $restaurant->save();
 
-        return redirect()->route('restaurants');        
+        return redirect()->route('restaurants');
     }
 
     /**
@@ -69,15 +68,8 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-        
         $restaurant = Restaurant::findOrFail($id);
-
-        // if ($user->restaurant === null) {
-        //     return redirect()->action([RestaurantController::class, 'create']);
-        // }
-        // else {
-            return view('restaurant', compact('restaurant'));
-        // }
+        return view('restaurant', compact('restaurant'));
     }
 
     /**

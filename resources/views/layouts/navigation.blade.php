@@ -14,12 +14,12 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 @auth
-                    @if(Auth::user()->role == "1" || Auth::user()->role == "2")
-                    {{-- <x-nav-link :href="route('restaurant')" :active="request()->routeIs('restaurant')">
-                        {{ __('Business') }}
-                    </x-nav-link> --}}
-                    @endif
                     @if(Auth::user()->role == "2")
+                    <x-nav-link :href="route('business')" :active="request()->routeIs('business')">
+                        {{ __('messages.Business') }}
+                    </x-nav-link>
+                    @endif
+                    @if(Auth::user()->role == "3")
                     <x-nav-link :href="route('category')" :active="request()->routeIs('category')">
                         {{ __('messages.Category') }}
                     </x-nav-link>

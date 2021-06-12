@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
@@ -28,16 +29,17 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('restaurant/create', RestaurantController::class);
 Route::resource('restaurant', RestaurantController::class);
 
 Route::get('restaurants', [RestaurantController::class,'index'])->name('restaurants');
 
+Route::get('business', [BusinessController::class, 'showBusiness'])->name('business');
+
 Route::get('restaurant/create', [RestaurantController::class, 'create']);
 Route::post('restaurant/create', [RestaurantController::class, 'store']);
 
-Route::get('food/create', [FoodController::class, 'create'])->name('food')->middleware('roles:1,2');
-Route::post('food/created', [FoodController::class, 'store'])->middleware('roles:1,2');
+Route::get('food/create', [FoodController::class, 'create'])->name('food')->middleware('roles:2,3');
+Route::post('food/created', [FoodController::class, 'store'])->middleware('roles:2,3');
 
 Route::get('category', [CategoryController::class, 'index'])->name('category');
 Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
