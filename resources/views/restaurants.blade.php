@@ -7,7 +7,6 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 content-center">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <!-- component -->
                 <div class="content m-2">
                     <div class="grid mt-8  gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
@@ -59,20 +58,13 @@
                                                         @endif
 
                                                     @endfor
-
-
-
-
-
-
                                                 </div>
                                             </div>
                                             <div class="flex p-4 pb-2 border-t border-gray-200 "></div>
                                             <div class="flex space-x-3 text-sm font-medium">
                                                 <div class="flex-auto flex space-x-3">
-                                                    <a href="#"
+                                                    <a href="{{ url('reviews', $restaurant->id) }}"
                                                         class="mb-2 md:mb-0 bg-white px-5 py-2 shadow-sm tracking-wider border text-gray-600 rounded-full hover:bg-gray-100 inline-flex items-center space-x-2 ">
-
                                                         <span>{{ __('messages.Reviews') }}</span>
                                                     </a>
                                                 </div>

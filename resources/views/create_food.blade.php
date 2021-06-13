@@ -51,12 +51,11 @@
 
             <!-- Food Category -->
             <div>
-                <x-label for="category_id" value="{{ __('Category') }}" />
+                <x-label for="category" value="{{ __('Category') }}" />
 
-                <x-input id="category_id" class="block mt-1 w-full" type="number" name="category_id" required
-                    :value="old('category_id')" />
+                <x-select id="category" class="block mt-1 w-full" name="category" :list='$categories' :value="old('category')"/>
 
-                <x-validation-error class="mb-4" :errors="$errors" title="category_id" />
+                <x-validation-error class="mb-4" :errors="$errors" title="category" />
             </div>
 
             <div class="flex items-center justify-end mt-4">

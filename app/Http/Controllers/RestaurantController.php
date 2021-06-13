@@ -80,7 +80,8 @@ class RestaurantController extends Controller
     public function show($id)
     {
         $restaurant = Restaurant::findOrFail($id);
-        return view('restaurant', compact('restaurant'));
+        $foods = Food::where('restaurant_id',$id)->paginate(15);
+        return view('restaurant', compact('restaurant','foods'));
     }
 
     /**

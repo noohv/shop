@@ -12,16 +12,23 @@ use Auth;
 
 class ReviewController extends Controller
 {
-    public function store (Request $request,$id)
-    {
+    public function index ($id) {
+        $reviews = Review::where('restaurant_id',"=",$id)->paginate(9);
+        $users = User::get();
+        return view('reviews',compact('reviews','users'));
+    }
+
+
+    public function store (Request $request,$id) {
         $rules = array(
-            'rating' => 'required|min:1|max:5',
             'description' => 'required|string',
         );
         $this->validate($request, $rules);
 
+        $radio = $request->get('rate', 1);
+
         $review = new Review();
-        $review->rating = $request->rating;
+        $review->rating = $radio;
         $review->review = $request->description;
         $review->user_id = Auth::id();
         $review->restaurant_id = $id;

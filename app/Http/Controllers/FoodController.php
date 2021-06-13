@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Restaurant;
+use App\Models\Category;
 use App\Models\Food;
 use Auth;
 
@@ -15,7 +16,11 @@ class FoodController extends Controller
     }
 
     public function create() {
-        return view('create_food');
+        $categories = Category::all()->map(function ($category) {
+            $category->value = $category->id;
+            return $category;
+	   });
+        return view('create_food',compact('categories'));
     }
 
 
@@ -40,7 +45,7 @@ class FoodController extends Controller
         $food->image = $imageName;
         $food->price = $request->price;
         $food->restaurant_id = $restaurant->id;
-        $food->category_id = $request->category_id;
+        $food->category()->associate(Category::findOrFail($request->category));
 
         $food->save();
 

@@ -60,4 +60,6 @@ Route::post('order', [OrderController::class, 'store']);
 
 Route::get('myorders', [OrderController::class, 'index'])->name('orders.client');
 
+Route::get('reviews/{id}', [ReviewController::class, 'index'])->name('review.index');
+
 Route::get('lang/{locale}',LanguageController::class);
