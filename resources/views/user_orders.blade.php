@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Orders') }}
+            {{ __('messages.My Orders') }}
         </h2>
     </x-slot>
 
@@ -14,19 +14,19 @@
                             <tr>
                                 <th scope="col"
                                     class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                                    {{ __('Order No.') }}
+                                    {{ __('messages.Order No') }}
                                 </th>
                                 <th scope="col"
                                     class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                                    {{ __('Ordered At') }}
+                                    {{ __('messages.Ordered At') }}
                                 </th>
                                 <th scope="col"
                                     class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                                    {{ __('Total') }}
+                                    {{ __('messages.Total') }}
                                 </th>
                                 <th scope="col"
                                     class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                                    {{ __('Details') }}
+                                    {{ __('messages.Details') }}
                                 </th>
                             </tr>
                         </thead>

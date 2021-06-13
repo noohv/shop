@@ -17,13 +17,10 @@ use Auth;
 
 class RestaurantController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth');
-    }
-
     public function index() {
         $restaurants = Restaurant::paginate(30);
-        return view('restaurants',compact('restaurants'));
+        $reviews = Review::get();
+        return view('restaurants',compact('restaurants','reviews'));
     }
 
     /**
@@ -33,7 +30,13 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('create_restaurant');
+        $user = User::with('restaurant')->find(Auth::id());
+        if ($user->restaurant === null) {
+            return view('create_restaurant');
+        }
+        else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -47,12 +50,20 @@ class RestaurantController extends Controller
         $rules = array(
             'name' => 'required|string|min:2|max:191',
             'description' => 'required|string',
+            'city' => 'required|string|min:4',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         );
         $this->validate($request, $rules);
+
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
+
 
         $restaurant = new Restaurant();
         $restaurant->name = $request->name;
         $restaurant->description = $request->description;
+        $restaurant->location = $request->city;
+        $restaurant->image = $imageName;
         $restaurant->user_id = Auth::id();
 
         $restaurant->save();

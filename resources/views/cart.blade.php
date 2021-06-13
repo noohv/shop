@@ -27,7 +27,7 @@
                             @foreach ($items as $item)
                                 <tr>
                                     <td class="hidden pb-4 md:table-cell">
-                                        <img src="{{ $item->associatedModel->image }}" class="w-20 rounded"
+                                        <img src="{{ asset('images/'.$item->associatedModel->image) }}" class="w-20 rounded"
                                             alt="Thumbnail">
                                     </td>
                                     <td>

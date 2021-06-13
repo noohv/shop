@@ -8,7 +8,6 @@ use App\Models\Review;
 use App\Models\Food;
 use App\Models\Restaurant;
 use App\Models\Category;
-// use App\Http\Middleware\Roles;
 
 use Illuminate\Support\Facades\DB;
 use Auth;

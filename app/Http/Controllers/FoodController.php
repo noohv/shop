@@ -23,26 +23,28 @@ class FoodController extends Controller
         $rules = array(
             'name' => 'required|string|min:2|max:191',
             'description' => 'required|string',
-            'image' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'price' => 'required|min:0|max:500',
-        );        
-        $this->validate($request, $rules); 
-        
+        );
+        $this->validate($request, $rules);
+
         $user_id=Auth::id();
         $restaurant = Restaurant::where("user_id", "=", $user_id)->first();
-        
+
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
 
         $food = new Food();
         $food->name = $request->name;
         $food->description = $request->description;
-        $food->image = $request->image;
+        $food->image = $imageName;
         $food->price = $request->price;
         $food->restaurant_id = $restaurant->id;
         $food->category_id = $request->category_id;
-        
+
         $food->save();
 
-        return redirect()->route('home');        
+        return redirect()->route('home');
 
     }
 }

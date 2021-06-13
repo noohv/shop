@@ -26,7 +26,7 @@
                                 class="py-6  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                                 <div class="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
                                     <div class="w-1/3 bg-cover"
-                                        style="background-image: url('{{ $food->image }}')">
+                                        style="background-image: url('{{ asset('images/'.$food->image) }}')">
                                     </div>
                                     <div class="w-2/3 p-4">
                                         <h1 class="text-gray-900 font-bold text-2xl">{{ $food->name }}</h1>

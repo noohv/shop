@@ -6,7 +6,7 @@
     </x-slot>
 
     <x-form>
-        <form method="POST" action="{{ action([App\Http\Controllers\FoodController::class, 'store']) }}">
+        <form method="POST" action="{{ action([App\Http\Controllers\FoodController::class, 'store']) }}" enctype="multipart/form-data">
             @csrf
 
             <!-- Name -->
@@ -33,7 +33,7 @@
             <div>
                 <x-label for="image" value="{{ __('Image') }}" />
 
-                <x-input id="image" class="block mt-1 w-full" type="text" name="image" required :value="old('image')" />
+                <x-input id="image" class="block mt-1 w-full" type="file" name="image" required :value="old('image')" />
 
                 <x-validation-error class="mb-4" :errors="$errors" title="image" />
             </div>

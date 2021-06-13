@@ -52,13 +52,6 @@ class DatabaseSeeder extends Seeder
             'role' => 1,
         ]);
 
-        DB::table('restaurants')->insert([
-            'name' => 'Babilonija',
-            'description' => 'Best restsr',
-            'user_id' => 1,
-            'status' => 1,
-        ]);
-
         DB::table('categories')->insert([
             'name' => 'Pasta',
             'description' => 'Makaron',

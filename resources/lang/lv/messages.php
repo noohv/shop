@@ -25,8 +25,24 @@ return [
 
     // Orders
     'my_orders' => 'Mani Sūtījumi',
+    'My Orders' => 'Mani Sūtījumi',
+    'Order No' => 'Pasūtījuma Nr.',
+    'Ordered At' => 'Pasūt. Laiks',
+    'Details' => 'Detaļas',
 
     'Name' => 'Nosaukums',
+    'Description' => 'Apraksts',
+    'Food List' => 'Ēdienu Saraksts',
+    'ID' => 'ID',
+    'Price' => 'Cena',
+    'Time' => 'Laiks',
+    'Order ID' => 'Pasūtījuma Nr.',
+    'Food ID' => 'Ēdienu Nr.',
+    'Orders' => 'Pasūtījumi',
+    'My Business' => 'Mans Bizness',
+    'Business' => 'Bizness',
+
+
     'Users' => 'Lietotāji',
     'Create new' => 'Izveidot jaunu',
     'Create a new author' => 'Izveidot jaunu autoru',
@@ -41,6 +57,16 @@ return [
     'Title' => 'Nosaukums',
     'Name_person' => 'Vārds',
 
+
+    'Leave Review' => 'Atsauksme',
+    'View Restaurant' => 'Apskatīt',
+    'Restaurant' => 'Restorāns',
+
+
+
+
+
+    'Register as Business' => 'Reģistrēties kā Bizness?',
     'Register' => 'Reģistrēties',
     'Email' => 'E-pasts',
     'Password' => 'Parole',

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\CategoryController;
@@ -30,6 +31,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('restaurant', RestaurantController::class);
+Route::post('restaurant/{id}/review',[ReviewController::class,'store'])->name('review.store');
 
 Route::get('restaurants', [RestaurantController::class,'index'])->name('restaurants');
 

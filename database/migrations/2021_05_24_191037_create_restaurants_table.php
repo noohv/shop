@@ -18,6 +18,9 @@ class CreateRestaurantsTable extends Migration
             $table->timestamps();
             $table->string('name')->unique();
             $table->string('description');
+            $table->string('image');
+            $table->string('location');
+            $table->integer('rating')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->boolean('status')->default(1);
         });

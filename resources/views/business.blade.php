@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Restaurant') }}
+            {{ __('messages.My Business') }}
         </h2>
     </x-slot>
 
@@ -9,19 +9,19 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <h1 class="text-4xl"> <b>{{ __('Name') }}:</b> {{ $restaurant->name }} </h1>
+                    <h1 class="text-4xl"> <b>{{ __('messages.Name') }}:</b> {{ $restaurant->name }} </h1>
                     <br>
-                    <p class="text-lg"><b>{{ __('Description') }}: </b>{{ $restaurant->description }}</p>
+                    <p class="text-lg"><b>{{ __('messages.Description') }}: </b>{{ $restaurant->description }}</p>
                 </div>
-                <h3 class="text-center p-3 font-bold">Food List</h3>
+                <h3 class="text-center p-3 font-bold">{{ __('messages.Food List') }}</h3>
 
 
                 <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
                     <tr class="text-left border-b-2 border-gray-300">
-                      <th class="px-4 py-3">ID</th>
-                      <th class="px-4 py-3">Name</th>
-                      <th class="px-4 py-3">Category</th>
-                      <th class="px-4 py-3">Price</th>
+                      <th class="px-4 py-3">{{ __('messages.ID') }}</th>
+                      <th class="px-4 py-3">{{ __('messages.Name') }}</th>
+                      <th class="px-4 py-3">{{ __('messages.Category') }}</th>
+                      <th class="px-4 py-3">{{ __('messages.Price') }}</th>
                     </tr>
 
                     @foreach ($foodList as $food)
@@ -39,15 +39,15 @@
 
                 <hr>
 
-                <h3 class="text-center p-3 font-bold">Orders</h3>
+                <h3 class="text-center p-3 font-bold">{{ __('messages.Orders') }}</h3>
 
                 <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
                     <tr class="text-left border-b-2 border-gray-300">
-                      <th class="px-4 py-3">Time</th>
-                      <th class="px-4 py-3">Order ID</th>
-                      <th class="px-4 py-3">Food</th>
-                      <th class="px-4 py-3">Quantity</th>
-                      <th class="px-4 py-3">Price</th>
+                      <th class="px-4 py-3">{{ __('messages.Time') }}</th>
+                      <th class="px-4 py-3">{{ __('messages.Order ID') }}</th>
+                      <th class="px-4 py-3">{{ __('messages.Food ID') }}</th>
+                      <th class="px-4 py-3">{{ __('messages.Quantity') }}</th>
+                      <th class="px-4 py-3">{{ __('messages.Price') }}</th>
                     </tr>
 
                     @foreach ($orderItems as $item)
