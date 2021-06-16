@@ -14,6 +14,11 @@ use Auth;
 
 class BusinessController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+        $this->middleware('roles:2');
+    }
+
     public function showBusiness() {
         $userID = Auth::id();
         $user = User::with('restaurant')->find($userID);

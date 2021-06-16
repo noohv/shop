@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Review;
 use App\Models\Food;
 use App\Models\Restaurant;
+use App\Models\Order;
 use App\Http\Middleware\Roles;
 
 use Illuminate\Support\Facades\DB;
@@ -81,7 +82,9 @@ class RestaurantController extends Controller
     {
         $restaurant = Restaurant::findOrFail($id);
         $foods = Food::where('restaurant_id',$id)->paginate(15);
-        return view('restaurant', compact('restaurant','foods'));
+        $hasOrder = Order::where('id',$id)->where('user_id', Auth::id())->exists();
+        // $hasReview = Review::where('id',$id)->where('user_id', Auth::id())->exists();
+        return view('restaurant', compact('restaurant','foods','hasOrder'));
     }
 
     /**

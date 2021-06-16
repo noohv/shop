@@ -40,8 +40,8 @@ Route::get('business', [BusinessController::class, 'showBusiness'])->name('busin
 Route::get('restaurant/create', [RestaurantController::class, 'create']);
 Route::post('restaurant/create', [RestaurantController::class, 'store']);
 
-Route::get('food/create', [FoodController::class, 'create'])->name('food')->middleware('roles:2,3');
-Route::post('food/created', [FoodController::class, 'store'])->middleware('roles:2,3');
+Route::get('food/create', [FoodController::class, 'create'])->name('food')->middleware('roles:2');
+Route::post('food/create', [FoodController::class, 'store'])->middleware('roles:2');
 
 Route::get('category', [CategoryController::class, 'index'])->name('category');
 Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
@@ -61,5 +61,12 @@ Route::post('order', [OrderController::class, 'store']);
 Route::get('myorders', [OrderController::class, 'index'])->name('orders.client');
 
 Route::get('reviews/{id}', [ReviewController::class, 'index'])->name('review.index');
+
+
+Route::post('food-remove', [FoodController::class, 'destroy'])->name('food.destroy')->middleware('roles:2');
+Route::get('food-edit/{id}', [FoodController::class, 'edit'])->name('food.edit')->middleware('roles:2');
+Route::post('food-edit/{id}', [FoodController::class, 'update'])->name('food.update')->middleware('roles:2');
+
+
 
 Route::get('lang/{locale}',LanguageController::class);

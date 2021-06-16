@@ -102,6 +102,8 @@
                                 {{ $foods->render() }}
                             </div>
 
+                    @auth
+                    @if($hasOrder)
                     <h2 class="text-gray-800 text-center text-3xl font-semibold">{{ __('messages.Leave a review') }}</h2>
                     <form method="POST" action="{{ route('review.store',['id' => $restaurant->id ]) }}" enctype="multipart/form-data">
                         @csrf
@@ -139,6 +141,10 @@
                             </div>
                         </div>
                     </form>
+
+                    @endif
+
+                    @endauth
                 </div>
             </div>
         </div>

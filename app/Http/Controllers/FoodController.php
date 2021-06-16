@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Restaurant;
+use App\Models\OrderItem;
 use App\Models\Category;
 use App\Models\Food;
 use Auth;
@@ -52,4 +53,48 @@ class FoodController extends Controller
         return redirect()->route('home');
 
     }
+
+    public function edit($id)
+    {
+        $categories = Category::all()->map(function ($category) {
+            $category->value = $category->id;
+            return $category;
+	   });
+
+        $food=Food::find($id);
+        return view('edit_food',compact('food','categories'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
+
+
+        $food=Food::find($id);
+        $food->id=$id;
+        $food->name=$request->name;
+        $food->description=$request->description;
+        $food->image=$imageName;
+        $food->price=$request->price;
+        $food->category()->associate(Category::findOrFail($request->category));
+
+        $food->save();
+
+        return redirect()->route('home');
+    }
+
+    public function destroy(Request $request) {
+        OrderItem::where('foods_id',$request->id)->delete();
+        Food::where('id',$request->id)->delete();
+        return redirect()->back();
+    }
+
 }

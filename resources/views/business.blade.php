@@ -15,13 +15,20 @@
                 </div>
                 <h3 class="text-center p-3 font-bold">{{ __('messages.Food List') }}</h3>
 
+                <div class="text-center">
+                    <a href="{{url('food/create')}}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                        <svg class="h-6 w-6 text-black"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
+                        <span>{{ __('messages.Create') }}</span>
+                    </a>
 
+                </div>
                 <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
                     <tr class="text-left border-b-2 border-gray-300">
                       <th class="px-4 py-3">{{ __('messages.ID') }}</th>
                       <th class="px-4 py-3">{{ __('messages.Name') }}</th>
                       <th class="px-4 py-3">{{ __('messages.Category') }}</th>
                       <th class="px-4 py-3">{{ __('messages.Price') }}</th>
+                      <th class="px-4 py-3">{{ __('messages.Actions') }}</th>
                     </tr>
 
                     @foreach ($foodList as $food)
@@ -30,6 +37,23 @@
                         <td class="px-4 py-3">{{ $food->name }}</td>
                         <td class="px-4 py-3">{{ $food->category_id }}</td>
                         <td class="px-4 py-3">{{ $food->price }}</td>
+                        <td class="px-4 py-3">
+                            <form class="inline-block" method="POST" action="{{ route('food.destroy') }}">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $food->id }}">
+                                <button id="{{ $food->id }}" type="submit"
+                                    class="text-gray-700 md:ml-4">
+                                    <svg class="h-6 w-6 text-red-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="4" y1="7" x2="20" y2="7" />  <line x1="10" y1="11" x2="10" y2="17" />  <line x1="14" y1="11" x2="14" y2="17" />  <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />  <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>                                </button>
+                                </button>
+                            </form>
+                            <div class="inline-block">
+                                <a href="{{ url('food-edit', $food->id) }}"
+                                    class="text-gray-700 md:ml-4">
+                                    <svg class="h-6 w-6 text-black"  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />  <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />  <line x1="16" y1="5" x2="19" y2="8" /></svg>
+                                </a>
+                            </div>
+
+                        </td>
                         </tr>
                     @endforeach
                 </table>
