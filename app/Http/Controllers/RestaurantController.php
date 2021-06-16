@@ -11,7 +11,7 @@ use App\Models\Food;
 use App\Models\Restaurant;
 use App\Models\Order;
 use App\Http\Middleware\Roles;
-
+use App\Models\OrderItem;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
@@ -82,9 +82,25 @@ class RestaurantController extends Controller
     {
         $restaurant = Restaurant::findOrFail($id);
         $foods = Food::where('restaurant_id',$id)->paginate(15);
-        $hasOrder = Order::where('id',$id)->where('user_id', Auth::id())->exists();
-        // $hasReview = Review::where('id',$id)->where('user_id', Auth::id())->exists();
-        return view('restaurant', compact('restaurant','foods','hasOrder'));
+        $orders = Order::where('user_id',Auth::id())->get();
+        $orderItems = OrderItem::get();
+        $hasOrder=false;
+        if($orders==null){
+            $hasOrder=false;
+        }
+        else {
+            foreach($foods as $food){
+                foreach($orderItems as $orderItem){
+                    foreach($orders as $order) {
+                        if($food->id==$orderItem->foods_id and $food->restaurant_id=$id and $order->id==$orderItem->order_id){
+                            $hasOrder=true;
+                        }
+                    }
+                }
+            }
+        }
+        $hasReview = Review::where('restaurant_id',$id)->where('user_id', Auth::id())->exists();
+        return view('restaurant', compact('restaurant','foods','hasReview','hasOrder'));
     }
 
     /**

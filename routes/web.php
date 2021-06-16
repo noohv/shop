@@ -32,6 +32,7 @@ Route::get('/dashboard', function () {
 
 Route::resource('restaurant', RestaurantController::class);
 Route::post('restaurant/{id}/review',[ReviewController::class,'store'])->name('review.store');
+Route::post('restaurant/{id}/review',[ReviewController::class,'update'])->name('review.update');
 
 Route::get('restaurants', [RestaurantController::class,'index'])->name('restaurants');
 

@@ -103,47 +103,86 @@
                             </div>
 
                     @auth
-                    @if($hasOrder)
-                    <h2 class="text-gray-800 text-center text-3xl font-semibold">{{ __('messages.Leave a review') }}</h2>
-                    <form method="POST" action="{{ route('review.store',['id' => $restaurant->id ]) }}" enctype="multipart/form-data">
-                        @csrf
-                        <div class="py-3 sm:max-w-xl sm:mx-auto">
-                            <div class="bg-white min-w-1xl flex flex-col rounded-xl shadow-lg">
-                                <div class="bg-gray-200 rounded w-full flex flex-col items-center">
+                    @if(Auth::user()->role == "1" or Auth::user()->role == "3")
+                        @if ($hasReview==false and $hasOrder==true)
+                        <h2 class="text-gray-800 text-center text-3xl font-semibold">{{ __('messages.Leave a review') }}</h2>
+                        <form method="POST" action="{{ route('review.store',['id' => $restaurant->id ]) }}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="py-3 sm:max-w-xl sm:mx-auto">
+                                <div class="bg-white min-w-1xl flex flex-col rounded-xl shadow-lg">
+                                    <div class="bg-gray-200 rounded w-full flex flex-col items-center">
 
-                                    <div class="flex flex-col items-center py-6 space-y-3">
-                                    <span class="text-lg text-gray-800">{{ __('messages.Rating') }}</span>
+                                        <div class="flex flex-col items-center py-6 space-y-3">
+                                        <span class="text-lg text-gray-800">{{ __('messages.Rating') }}</span>
 
-                                    <div class="flex space-x-3">
+                                        <div class="flex space-x-3">
 
-                                        <div class="rate">
-                                            <input type="radio" id="star5" name="rate" value="5" />
-                                            <label for="star5" title="text">5 stars</label>
-                                            <input type="radio" id="star4" name="rate" value="4" />
-                                            <label for="star4" title="text">4 stars</label>
-                                            <input type="radio" id="star3" name="rate" value="3" />
-                                            <label for="star3" title="text">3 stars</label>
-                                            <input type="radio" id="star2" name="rate" value="2" />
-                                            <label for="star2" title="text">2 stars</label>
-                                            <input type="radio" id="star1" name="rate" value="1" />
-                                            <label for="star1" title="text">1 star</label>
+                                            <div class="rate">
+                                                <input type="radio" id="star5" name="rate" value="5" />
+                                                <label for="star5" title="text">5 stars</label>
+                                                <input type="radio" id="star4" name="rate" value="4" />
+                                                <label for="star4" title="text">4 stars</label>
+                                                <input type="radio" id="star3" name="rate" value="3" />
+                                                <label for="star3" title="text">3 stars</label>
+                                                <input type="radio" id="star2" name="rate" value="2" />
+                                                <label for="star2" title="text">2 stars</label>
+                                                <input type="radio" id="star1" name="rate" value="1" />
+                                                <label for="star1" title="text">1 star</label>
+                                            </div>
                                         </div>
+
+                                    </div>
+
+                                    <div class="w-3/4 flex flex-col">
+                                        <textarea class="p-4 text-gray-500 rounded-xl h-20" name="description" id="description" rows="3"></textarea>
+                                        <x-validation-error class="mb-4" :errors="$errors" title="description" />
+                                        <button type="submit" class="py-3 my-8 text-lg bg-gray-800 rounded-xl text-white">{{ __('messages.Rate Now') }}</button>
                                     </div>
 
                                 </div>
-
-                                <div class="w-3/4 flex flex-col">
-                                    <textarea class="p-4 text-gray-500 rounded-xl h-20" name="description" id="description" rows="3"></textarea>
-                                    <x-validation-error class="mb-4" :errors="$errors" title="description" />
-                                    <button type="submit" class="py-3 my-8 text-lg bg-gray-800 rounded-xl text-white">{{ __('messages.Rate Now') }}</button>
-                                </div>
-
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                        @else
+                        <h2 class="text-gray-800 text-center text-3xl font-semibold">{{ __('messages.Edit your review') }}</h2>
+                        <form method="POST" action="{{ route('review.update',['id' => $restaurant->id ]) }}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="py-3 sm:max-w-xl sm:mx-auto">
+                                <div class="bg-white min-w-1xl flex flex-col rounded-xl shadow-lg">
+                                    <div class="bg-gray-200 rounded w-full flex flex-col items-center">
 
+                                        <div class="flex flex-col items-center py-6 space-y-3">
+                                        <span class="text-lg text-gray-800">{{ __('messages.Rating') }}</span>
+
+                                        <div class="flex space-x-3">
+
+                                            <div class="rate">
+                                                <input type="radio" id="star5" name="rate" value="5" />
+                                                <label for="star5" title="text">5 stars</label>
+                                                <input type="radio" id="star4" name="rate" value="4" />
+                                                <label for="star4" title="text">4 stars</label>
+                                                <input type="radio" id="star3" name="rate" value="3" />
+                                                <label for="star3" title="text">3 stars</label>
+                                                <input type="radio" id="star2" name="rate" value="2" />
+                                                <label for="star2" title="text">2 stars</label>
+                                                <input type="radio" id="star1" name="rate" value="1" />
+                                                <label for="star1" title="text">1 star</label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="w-3/4 flex flex-col">
+                                        <textarea class="p-4 text-gray-500 rounded-xl h-20" name="description" id="description" rows="3"></textarea>
+                                        <x-validation-error class="mb-4" :errors="$errors" title="description" />
+                                        <button type="submit" class="py-3 my-8 text-lg bg-gray-800 rounded-xl text-white">{{ __('messages.Rate Now') }}</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+
+                        @endif
                     @endif
-
                     @endauth
                 </div>
             </div>
