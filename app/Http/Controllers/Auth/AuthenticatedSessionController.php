@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -29,10 +30,18 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         $request->authenticate();
+            if(Auth::user()->status==1){
+                    Auth::guard('web')->logout();
+                    return view('banned');
+                }
 
-        $request->session()->regenerate();
+            else{
+                $request->authenticate();
+                $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->intended(RouteServiceProvider::HOME);
+    
+        }
     }
 
     /**

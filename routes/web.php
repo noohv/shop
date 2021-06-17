@@ -48,7 +48,9 @@ Route::get('category', [CategoryController::class, 'index'])->name('category');
 Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
 Route::post('category/created', [CategoryController::class, 'store']);
 
-Route::get('admin/users', [AdminController::class, 'index'])->name('admin.users');
+Route::get('admin/users', [AdminController::class, 'allUsers'])->name('admin.users');
+Route::get('admin/users/ban/{id}', [AdminController::class, 'banUser'])->name('admin.ban');
+Route::get('admin/users/unban/{id}', [AdminController::class, 'unbanUser'])->name('admin.unban');
 
 Route::apiResource('cart', CartController::class);
 Route::get('cart', [CartController::class,'index'])->name('cart.index');

@@ -18,7 +18,7 @@
 
                                     <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
                                         <div class="flex items-center justify-center">
-                                            ID
+                                            {{ __('messages.ID') }}
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -28,7 +28,7 @@
                                     </th>
                                     <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
                                         <div class="flex items-center justify-center">
-                                            Name
+                                            {{ __('messages.First Name') }}
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -38,7 +38,7 @@
                                     </th>
                                     <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
                                         <div class="flex items-center justify-center">
-                                            Email
+                                            {{ __('messages.Email') }}
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -48,7 +48,7 @@
                                     </th>
                                     <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
                                         <div class="flex items-center justify-center">
-                                            Role
+                                            {{ __('messages.Role') }}
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -58,7 +58,7 @@
                                     </th>
                                     <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
                                         <div class="flex items-center justify-center">
-                                            Action
+                                            {{ __('messages.Actions') }}
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -77,9 +77,17 @@
                                         <td class="p-2 border-r">{{ $user->role }}</td>
                                         <td>
                                             <a href="#"
-                                                class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin">Edit</a>
-                                            <a href="#"
-                                                class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin">Remove</a>
+                                                class="bg-blue-500 p-2 rounded text-white hover:shadow-lg text-xs font-thin">{{ __('messages.Edit') }}</a>
+                                            @if(!(Auth::id()==$user->id))
+                                                @if($user->status==0)
+                                                <a href="{{ url('admin/users/ban', $user->id) }}"
+                                                class="bg-red-500 p-2 rounded text-white hover:shadow-lg text-xs font-thin">{{ __('messages.Ban') }}</a>
+                                                @else
+                                                <a href="{{ url('admin/users/unban', $user->id) }}"
+                                                class="bg-green-500 p-2 rounded text-white hover:shadow-lg text-xs font-thin">{{ __('messages.Unban') }}</a>
+
+                                                @endif
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
