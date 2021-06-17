@@ -74,6 +74,13 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $rules = array(
+            'name' => 'required|string|min:2|max:191',
+            'description' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'price' => 'required|min:0|max:500',
+        );
+        $this->validate($request, $rules);
         $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path('images'), $imageName);
 

@@ -142,7 +142,7 @@
                                 </div>
                             </div>
                         </form>
-                        @else
+                        @elseif($hasReview==true)
                         <h2 class="text-gray-800 text-center text-3xl font-semibold">{{ __('messages.Edit your review') }}</h2>
                         <form method="POST" action="{{ route('review.update',['id' => $restaurant->id ]) }}" enctype="multipart/form-data">
                             @csrf

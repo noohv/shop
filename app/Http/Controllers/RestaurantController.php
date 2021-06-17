@@ -85,7 +85,7 @@ class RestaurantController extends Controller
         $orders = Order::where('user_id',Auth::id())->get();
         $orderItems = OrderItem::get();
         $hasOrder=false;
-        if($orders==null){
+        if($orders==null or $orderItems==null){
             $hasOrder=false;
         }
         else {
@@ -94,6 +94,7 @@ class RestaurantController extends Controller
                     foreach($orders as $order) {
                         if($food->id==$orderItem->foods_id and $food->restaurant_id=$id and $order->id==$orderItem->order_id){
                             $hasOrder=true;
+                            break;
                         }
                     }
                 }
