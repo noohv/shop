@@ -41,8 +41,21 @@ return [
     'Orders' => 'Orders',
     'My Business' => 'My Business',
     'Business' => 'Business',
-    
-    
+    'City' => 'City',
+    'Thumbnail' => 'Thumbnail',
+    'Create Business' => 'Create Business',
+    'Update' => 'Update',
+    'Edit Business' => 'Edit Business',
+    'Edit Restaurant' => 'Edit Restaurant',
+    'Edit Food' => 'Edit Food',
+    'Image' => 'Image',
+    'Admin Panel' => 'Admin Panel',
+    'Restaurant ID' => 'Restaurant ID',
+    'User ID' => 'User ID',
+    'Review' => 'Review',
+
+
+
     'Reviews' => 'Reviews',
     'Edit your review' => 'Edit your review',
     'Leave a review' => 'Leave a review',
@@ -50,8 +63,8 @@ return [
     'Rate Now' => 'Rate Now',
 
 
-
     'Users' => 'Users',
+    'Panel' => 'Panel',
     'Create new' => 'Create new',
     'First name' => 'First name',
     'Last name' => 'Last name',
@@ -72,6 +85,9 @@ return [
     'Actions' => 'Actions',
     'Edit' => 'Edit',
     'Ban' => 'Ban',
+    'Unban' => 'Unban',
+    'Banned' => 'Banned',
+    'You are banned!' => 'You are banned!',
 
 
 

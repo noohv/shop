@@ -35,7 +35,11 @@ Route::resource('restaurant', RestaurantController::class);
 Route::post('restaurant/{id}/review',[ReviewController::class,'store'])->name('review.store');
 Route::post('restaurant/{id}/review/update',[ReviewController::class,'update'])->name('review.update');
 
-Route::get('restaurants', [RestaurantController::class,'index'])->name('restaurants');
+Route::get('restaurant/edit/{id}',[RestaurantController::class,'edit'])->name('restaurant.edit');
+Route::post('restaurant/edit/{id}',[RestaurantController::class,'update'])->name('restaurant.update');
+
+Route::get('restaurants', [RestaurantController::class,'index'])->name('restaurant.index');
+Route::post('restaurants', [RestaurantController::class,'index'])->name('restaurant.index');
 
 Route::get('business', [BusinessController::class, 'showBusiness'])->name('business');
 
@@ -49,9 +53,10 @@ Route::get('category', [CategoryController::class, 'index'])->name('category');
 Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
 Route::post('category/created', [CategoryController::class, 'store']);
 
-Route::get('admin/users', [AdminController::class, 'allUsers'])->name('admin.users');
+Route::get('admin', [AdminController::class, 'index'])->name('admin.users');
 Route::get('admin/users/ban/{id}', [AdminController::class, 'banUser'])->name('admin.ban');
 Route::get('admin/users/unban/{id}', [AdminController::class, 'unbanUser'])->name('admin.unban');
+Route::post('admin/review/delete', [ReviewController::class, 'destroy'])->name('review.destroy');
 
 Route::apiResource('cart', CartController::class);
 Route::get('cart', [CartController::class,'index'])->name('cart.index');
@@ -70,7 +75,6 @@ Route::get('reviews/{id}', [ReviewController::class, 'index'])->name('review.ind
 Route::post('food-remove', [FoodController::class, 'destroy'])->name('food.destroy')->middleware('roles:2');
 Route::get('food-edit/{id}', [FoodController::class, 'edit'])->name('food.edit')->middleware('roles:2');
 Route::post('food-edit/{id}', [FoodController::class, 'update'])->name('food.update')->middleware('roles:2');
-
 
 
 Route::get('lang/{locale}',LanguageController::class);

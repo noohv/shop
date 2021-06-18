@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Review;
 use App\Models\User;
 use Auth;
 
@@ -9,13 +11,14 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function __construct() {
-        $this->middleware('roles:3');
         $this->middleware('auth');
+        $this->middleware('roles:3');
     }
 
-    public function allUsers() {
+    public function index() {
         $users=User::paginate(15);
-        return view('allusers',compact('users'));
+        $reviews=Review::get();
+        return view('allusers',compact('users','reviews'));
     }
 
     public function banUser($id) {
@@ -24,12 +27,11 @@ class AdminController extends Controller
         $user->save();
         return redirect()->back();
     }
-    
+
     public function unbanUser($id) {
         $user = User::find($id);
         $user->status=0;
         $user->save();
         return redirect()->back();
     }
-
 }

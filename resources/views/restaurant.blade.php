@@ -64,8 +64,9 @@
                     <p class="text-lg"><b>{{ __('Description') }}: </b>{{ $restaurant->description }}</p>
                     @auth
                         @if (Auth::user()->role == "3" || (Auth::user()->role == "2" && $restaurant->user_id == Auth::id()))
-                        <a href="#">Edit Restaurant</a>
-                        @endif
+                        <a href="{{ url('restaurant/edit', $restaurant->id) }}"
+                            class="mb-2 md:mb-0 bg-gray-900 px-5 py-2 shadow-sm tracking-wider text-white rounded-full hover:bg-gray-800"
+                            type="button" aria-label="like">{{ __('messages.Edit Restaurant') }}</a>                        @endif
                     @endauth
 
                     <div class="grid grid-cols-3 items-center justify-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

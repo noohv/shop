@@ -6,15 +6,17 @@ use App\Models\OrderItem;
 use App\Models\Category;
 use App\Models\Food;
 use Auth;
+use Illuminate\Support\Facades\File;
 
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
 {
-    public function index(Request $request) {
-        // $foods=Food::paginate(30);
-        // return view('home',compact('foods'));
+    public function __construct() {
+        $this->middleware('auth')->only(['edit','destroy','store','create','update']);
+    }
 
+    public function index(Request $request) {
         $foods=Food::where([
             ['name','!=',null],
             [function($query) use ($request) {
@@ -66,7 +68,7 @@ class FoodController extends Controller
 
         $food->save();
 
-        return redirect()->route('food.index');
+        return redirect()->route('business');
 
     }
 
@@ -78,16 +80,14 @@ class FoodController extends Controller
 	   });
 
         $food=Food::find($id);
-        return view('edit_food',compact('food','categories'));
+        $restaurant=Restaurant::find($food->restaurant_id);
+        if($restaurant->user_id==Auth::id()){
+            return view('edit_food',compact('food','categories'));
+        }
+        return redirect()->route('food.index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $rules = array(
@@ -115,9 +115,15 @@ class FoodController extends Controller
     }
 
     public function destroy(Request $request) {
-        OrderItem::where('foods_id',$request->id)->delete();
-        Food::where('id',$request->id)->delete();
-        return redirect()->back();
+        $food=Food::find($request->id);
+        $restaurant=Restaurant::find($food->restaurant_id);
+        if($restaurant->user_id==Auth::id()){
+            OrderItem::where('foods_id',$request->id)->delete();
+            File::delete(public_path('images').'/'.$food->image);
+            $food->delete();
+            return redirect()->route('business');
+        }
+        return redirect()->route('business');
     }
 
 }

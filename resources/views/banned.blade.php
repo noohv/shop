@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="text-center h-full p-60 bg-red-500">
-        <p class="text-8xl text-white">You are banned!</p>
+        <p class="text-8xl text-white">{{ __('messages.You are banned!') }}</p>
         <p class="text-8xl text-white">:(</p>
     </div>
 

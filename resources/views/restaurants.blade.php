@@ -4,7 +4,34 @@
             {{ __('messages.Restaurants') }}
         </h2>
     </x-slot>
+    <div class="text-center pt-5">
+        <div>
+            <div>
+                <form action="{{ route('restaurant.index') }}" method="GET" role="search">
 
+                    <div class="m-2 align-end">
+                        <span>
+                            <x-input type="text" class="form-control mr-2" name="term" placeholder="Search restaurants" id="term" />
+                            <button type="submit" title="Search projects">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                  </svg>
+                            </button>
+                        </span>
+                        <a href="{{ route('restaurant.index') }}" class=" mt-1">
+                            <span>
+                                <button type="button" title="Refresh page">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                      </svg>
+                                </button>
+                            </span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 content-center">
                 <!-- component -->
@@ -17,7 +44,7 @@
                                     <div class="flex-none lg:flex">
                                         <div class=" h-full w-full lg:h-48 lg:w-48   lg:mb-0 mb-3">
                                             <img src="{{ asset('images/'.$restaurant->image) }}"
-                                                alt="Just a flower"
+                                                alt="No image found :("
                                                 class=" w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl">
                                         </div>
                                         <div class="flex-auto ml-3 justify-evenly py-2">

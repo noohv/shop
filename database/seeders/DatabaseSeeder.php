@@ -110,7 +110,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Chicken',
             'description' => 'Chicken',
         ]);
-        
+
         DB::table('categories')->insert([
             'name' => 'Beef',
             'description' => 'Beef',
@@ -159,23 +159,69 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('foods')->insert([
-            'name' => 'Pinapple Pizza',
-            'description' => 'Pizza with meat and pineapples',
+            'name' => 'Classical Pizza',
+            'description' => 'Classical italian pizza',
             'image' => 'pizza3.jpg',
-            'price' => '10.20',
+            'price' => '9.55',
             'category_id' => '5',
             'restaurant_id' => '1',
         ]);
 
         DB::table('foods')->insert([
-            'name' => 'Pinapple Pizza',
-            'description' => 'Pizza with meat and pineapples',
-            'image' => 'pizza3.jpg',
-            'price' => '10.20',
+            'name' => 'Slice of Pizza',
+            'description' => 'Slice from big pizza',
+            'image' => 'pizza4.jpg',
+            'price' => '3.99',
             'category_id' => '5',
             'restaurant_id' => '1',
         ]);
 
-        
+        DB::table('foods')->insert([
+            'name' => 'Triple Burger',
+            'description' => 'Burger three storeys high',
+            'image' => 'burger1.jpg',
+            'price' => '7.99',
+            'category_id' => '2',
+            'restaurant_id' => '2',
+        ]);
+
+
+        DB::table('foods')->insert([
+            'name' => 'Big Burger',
+            'description' => 'Pretty big burger',
+            'image' => 'burger2.jpg',
+            'price' => '6.99',
+            'category_id' => '2',
+            'restaurant_id' => '2',
+        ]);
+
+
+        DB::table('foods')->insert([
+            'name' => 'Chicken Medalions',
+            'description' => 'Chicken fillet',
+            'image' => 'chicken.jpg',
+            'price' => '8.25',
+            'category_id' => '6',
+            'restaurant_id' => '2',
+        ]);
+
+        DB::table('foods')->insert([
+            'name' => 'Big Fish',
+            'description' => 'Whole fish with lemon',
+            'image' => 'fish1.jpg',
+            'price' => '11.50',
+            'category_id' => '3',
+            'restaurant_id' => '2',
+        ]);
+
+
+        DB::table('foods')->insert([
+            'name' => 'Cream soup',
+            'description' => 'Very good cream soup',
+            'image' => 'soup1.jpg',
+            'price' => '13.50',
+            'category_id' => '2',
+            'restaurant_id' => '2',
+        ]);
     }
 }

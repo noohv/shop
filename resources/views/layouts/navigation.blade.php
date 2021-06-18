@@ -25,7 +25,7 @@
                     </x-nav-link>
 
                     <x-nav-link :href="route('admin.users')" :active="request()->routeIs('admin.users')">
-                        {{ __('messages.Users') }}
+                        {{ __('messages.Admin Panel') }}
                     </x-nav-link>
                     @endif
                     <x-nav-link :href="route('orders.client')" :active="request()->routeIs('orders.client')">
@@ -35,7 +35,7 @@
                 <x-nav-link :href="route('food.index')" :active="request()->routeIs('food.index')">
                     {{ __('messages.Foods') }}
                 </x-nav-link>
-                <x-nav-link :href="route('restaurants')" :active="request()->routeIs('restaurants')">
+                <x-nav-link :href="route('restaurant.index')" :active="request()->routeIs('restaurant.index')">
                     {{ __('messages.Restaurants') }}
                 </x-nav-link>
 

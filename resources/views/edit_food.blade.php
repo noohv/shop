@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Food') }}
+            {{ __('messages.Edit Food') }}
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
 
             <!-- Name -->
             <div>
-                <x-label for="name" value="{{ __('Name') }}" />
+                <x-label for="name" value="{{ __('messages.Name') }}" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus
                 value="{{$food->name}}" />
@@ -21,7 +21,7 @@
 
             <!-- Description -->
             <div>
-                <x-label for="description" value="{{ __('Description') }}" />
+                <x-label for="description" value="{{ __('messages.Description') }}" />
 
                 <x-input id="description" class="block mt-1 w-full" type="text" name="description" required
                 value="{{$food->description}}" />
@@ -31,7 +31,7 @@
 
             <!-- Image path -->
             <div>
-                <x-label for="image" value="{{ __('Image') }}" />
+                <x-label for="image" value="{{ __('messages.Image') }}" />
 
                 <x-input id="image" class="block mt-1 w-full" type="file" name="image" required value="{{$food->image}}" />
 
@@ -41,7 +41,7 @@
 
             <!-- Price -->
             <div>
-                <x-label for="price" value="{{ __('Price') }}" />
+                <x-label for="price" value="{{ __('messages.Price') }}" />
 
                 <x-input id="price" class="block mt-1 w-full" type="number" name="price" step=".01" required value="{{$food->price}}" />
 
@@ -49,7 +49,7 @@
             </div>
 
             <div>
-                <x-label for="category" value="{{ __('Category') }}" />
+                <x-label for="category" value="{{ __('messages.Category') }}" />
 
                 <x-select id="category" class="block mt-1 w-full" name="category" :list='$categories' :value="old('category')"/>
 
@@ -58,7 +58,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-button class="ml-4">
-                    {{ __('Create') }}
+                    {{ __('messages.Edit') }}
                 </x-button>
             </div>
         </form>

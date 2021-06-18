@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Category') }}
+            {{ __('messages.Create Category') }}
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
 
             <!-- First Name -->
             <div>
-                <x-label for="name" value="Name of Category" />
+                <x-label for="name" value="{{ __('messages.Name') }}" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus
                     :value="old('name')" />
@@ -21,7 +21,7 @@
 
             <!-- Last Name -->
             <div>
-                <x-label for="description" value="Description" />
+                <x-label for="description" value="{{ __('messages.Description') }}" />
 
                 <x-input id="description" class="block mt-1 w-full" type="text" name="description" required
                     :value="old('description')" />
@@ -31,7 +31,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-button class="ml-4">
-                    Create
+                    {{ __('messages.Create') }}
                 </x-button>
             </div>
         </form>

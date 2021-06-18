@@ -12,8 +12,14 @@ use Auth;
 
 class ReviewController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth')->only(['destroy']);
+        $this->middleware('roles:3')->only(['destroy']);
+    }
+
+
     public function index ($id) {
-        $reviews = Review::where('restaurant_id',"=",$id)->paginate(9);
+        $reviews = Review::where('restaurant_id',"=",$id)->paginate(20);
         $users = User::get();
         return view('reviews',compact('reviews','users'));
     }
@@ -46,6 +52,11 @@ class ReviewController extends Controller
 
     public function update(Request $request, $id)
     {
+        $rules = array(
+            'description' => 'required|string',
+        );
+        $this->validate($request, $rules);
+
         $radio = $request->get('rate', 1);
 
         $review=Review::where('restaurant_id',$id)->where('user_id',Auth::id())->first();
@@ -63,6 +74,18 @@ class ReviewController extends Controller
 
 
         return redirect()->route('food.index');
+    }
+
+    public function destroy(Request $request) {
+        $review=Review::find($request->id);
+        $restaurant=Restaurant::find($review->restaurant_id);
+        $review->delete();
+        $ratings = Review::where('restaurant_id',"=",$restaurant->id);
+        $avgRating = $ratings->avg('rating');
+        $restaurant->rating = $avgRating;
+        $restaurant->save();
+
+        return redirect()->route('admin.users');
     }
 
 }

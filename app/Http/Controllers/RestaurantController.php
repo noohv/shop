@@ -18,10 +18,28 @@ use Auth;
 
 class RestaurantController extends Controller
 {
-    public function index() {
-        $restaurants = Restaurant::paginate(30);
+
+    public function __construct() {
+        $this->middleware('auth')->only(['edit','store','create','update']);
+        $this->middleware('roles:2,3')->only(['edit','store','create','update']);
+    }
+
+
+    public function index(Request $request) {
         $reviews = Review::get();
-        return view('restaurants',compact('restaurants','reviews'));
+        $restaurants=Restaurant::where([
+            ['name','!=',null],
+            [function($query) use ($request) {
+                if(($term = $request->term)) {
+                    $query->orWhere('name', 'LIKE', '%' . $term . '%')->get();
+                }
+            }]
+        ])
+            ->orderBy('id')
+            ->paginate(30);
+
+        return view ('restaurants', compact('restaurants','reviews'));
+
     }
 
     public function create()
@@ -35,12 +53,6 @@ class RestaurantController extends Controller
         }
     }
 
-    /**
-     * Store a newly created book in the database.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $rules = array(
@@ -67,12 +79,6 @@ class RestaurantController extends Controller
         return redirect()->route('restaurants');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $restaurant = Restaurant::findOrFail($id);
@@ -99,38 +105,41 @@ class RestaurantController extends Controller
         return view('restaurant', compact('restaurant','foods','hasReview','hasOrder'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+        $restaurant=Restaurant::find($id);
+        if($restaurant->user_id==Auth::id() || Auth::user()->role == 3){
+            return view('edit_restaurant',compact('restaurant'));
+        }
+        return redirect()->route('food.index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $rules = array(
+            'name' => 'required|string|min:2|max:191',
+            'description' => 'required|string',
+            'city' => 'required|string|min:4',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+        );
+        $this->validate($request, $rules);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
 
+
+        $restaurant = Restaurant::find($id);
+        $restaurant->id=$id;
+        $restaurant->name = $request->name;
+        $restaurant->description = $request->description;
+        $restaurant->location = $request->city;
+        $restaurant->image = $imageName;
+        $restaurant->user_id = Auth::id();
+
+        $restaurant->save();
+
+        return redirect()->route('restaurants');
+
+    }
 }

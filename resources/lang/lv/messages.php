@@ -41,8 +41,21 @@ return [
     'Orders' => 'Pasūtījumi',
     'My Business' => 'Mans Bizness',
     'Business' => 'Bizness',
-    
-    
+    'City' => 'Pilsēta',
+    'Thumbnail' => 'Sīktēls',
+    'Create Business' => 'Pievienot Restorānu',
+    'Update' => 'Atjaunot',
+    'Edit Business' => 'Atjaunot Restorānu',
+    'Edit Restaurant' => 'Rediģēt Restorānu',
+    'Edit Food' => 'Rediģēt Ēdienu',
+    'Image' => 'Attēls',
+    'Admin Panel' => 'Admina Panelis',
+    'Restaurant ID' => 'Restorāna ID',
+    'User ID' => 'Lietotāja ID',
+    'Review' => 'Atsauksme',
+
+
+
     'Reviews' => 'Atsauksmes',
     'Edit your review' => 'Rediģēt atsauksmi',
     'Leave a review' => 'Atsauksme',
@@ -52,6 +65,7 @@ return [
 
 
     'Users' => 'Lietotāji',
+    'Panel' => 'Panelis',
     'Create new' => 'Izveidot jaunu',
     'Create a new author' => 'Izveidot jaunu autoru',
     'First name' => 'Vārds',
@@ -73,6 +87,9 @@ return [
     'Actions' => 'Darbības',
     'Edit' => 'Rediģēt',
     'Ban' => 'Aizliegt',
+    'Unban' => 'Atļaut',
+    'Banned' => 'Banots',
+    'You are banned!' => 'Jums ir liegta piekļuve!',
 
 
 
