@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
+        // Admin
         DB::table('users')->insert([
             'name' => 'vhoon',
             'email' => 'valters.huuns@gmail.com',
@@ -38,15 +39,43 @@ class DatabaseSeeder extends Seeder
             'role' => 3,
         ]);
 
+        // Business
         DB::table('users')->insert([
-            'name' => 'vhoon2',
-            'email' => 'vhoon2@gmail.com',
+            'name' => 'Restaurant1',
+            'email' => 'restaurant1@gmail.com',
             'password' => Hash::make('valtersh26'),
             'role' => 2,
         ]);
 
         DB::table('users')->insert([
-            'name' => 'vhoon3',
+            'name' => 'Restaurant2',
+            'email' => 'restaurant2@gmail.com',
+            'password' => Hash::make('valtersh26'),
+            'role' => 2,
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Restaurant3',
+            'email' => 'restaurant3@gmail.com',
+            'password' => Hash::make('valtersh26'),
+            'role' => 2,
+        ]);
+
+        // Clients
+        DB::table('users')->insert([
+            'name' => 'user1',
+            'email' => 'vhoon1@gmail.com',
+            'password' => Hash::make('valtersh26'),
+            'role' => 1,
+        ]);
+        DB::table('users')->insert([
+            'name' => 'user2',
+            'email' => 'vhoon2@gmail.com',
+            'password' => Hash::make('valtersh26'),
+            'role' => 1,
+        ]);
+        DB::table('users')->insert([
+            'name' => 'user3',
             'email' => 'vhoon3@gmail.com',
             'password' => Hash::make('valtersh26'),
             'role' => 1,
@@ -54,7 +83,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('categories')->insert([
             'name' => 'Pasta',
-            'description' => 'Makaron',
+            'description' => 'Pasta from Italy',
         ]);
 
         DB::table('categories')->insert([
@@ -67,5 +96,86 @@ class DatabaseSeeder extends Seeder
             'description' => 'Potato!?',
         ]);
 
+        DB::table('categories')->insert([
+            'name' => 'Vegeterian',
+            'description' => 'No meat',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Pizza',
+            'description' => 'Pizza',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Chicken',
+            'description' => 'Chicken',
+        ]);
+        
+        DB::table('categories')->insert([
+            'name' => 'Beef',
+            'description' => 'Beef',
+        ]);
+
+        DB::table('restaurants')->insert([
+            'name' => 'Johns Pizza',
+            'description' => 'Italian Pizzeria with delicious pizzas',
+            'image' => 'rest1.jpg',
+            'location' => 'Riga',
+            'user_id' => '2',
+        ]);
+
+        DB::table('restaurants')->insert([
+            'name' => 'Mamas Kitchen',
+            'description' => 'Foods which make you feel like at home',
+            'image' => 'rest2.jpg',
+            'location' => 'Riga',
+            'user_id' => '3',
+        ]);
+
+        DB::table('restaurants')->insert([
+            'name' => 'Piano',
+            'description' => 'One of the best restaurants in the world',
+            'image' => 'rest3.jpg',
+            'location' => 'Liepaja',
+            'user_id' => '4',
+        ]);
+
+        DB::table('foods')->insert([
+            'name' => 'Mozarella Pizza',
+            'description' => 'Pizza with cheese, mostly mozarella',
+            'image' => 'pizza1.jpg',
+            'price' => '8.99',
+            'category_id' => '5',
+            'restaurant_id' => '1',
+        ]);
+
+        DB::table('foods')->insert([
+            'name' => 'Vegeterian Pizza',
+            'description' => 'Pizza with no meat',
+            'image' => 'pizza2.jpg',
+            'price' => '10.99',
+            'category_id' => '5',
+            'restaurant_id' => '1',
+        ]);
+
+        DB::table('foods')->insert([
+            'name' => 'Pinapple Pizza',
+            'description' => 'Pizza with meat and pineapples',
+            'image' => 'pizza3.jpg',
+            'price' => '10.20',
+            'category_id' => '5',
+            'restaurant_id' => '1',
+        ]);
+
+        DB::table('foods')->insert([
+            'name' => 'Pinapple Pizza',
+            'description' => 'Pizza with meat and pineapples',
+            'image' => 'pizza3.jpg',
+            'price' => '10.20',
+            'category_id' => '5',
+            'restaurant_id' => '1',
+        ]);
+
+        
     }
 }
