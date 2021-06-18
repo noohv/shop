@@ -11,10 +11,26 @@ use Illuminate\Http\Request;
 
 class FoodController extends Controller
 {
-    public function index() {
-        $foods=Food::paginate(30);
-        return view('home',compact('foods'));
+    public function index(Request $request) {
+        // $foods=Food::paginate(30);
+        // return view('home',compact('foods'));
+
+        $foods=Food::where([
+            ['name','!=',null],
+            [function($query) use ($request) {
+                if(($term = $request->term)) {
+                    $query->orWhere('name', 'LIKE', '%' . $term . '%')->get();
+                }
+            }]
+        ])
+            ->orderBy('id')
+            ->paginate(30);
+
+        return view ('home', compact('foods'));
+
     }
+
+
 
     public function create() {
         $categories = Category::all()->map(function ($category) {
@@ -50,7 +66,7 @@ class FoodController extends Controller
 
         $food->save();
 
-        return redirect()->route('home');
+        return redirect()->route('food.index');
 
     }
 
@@ -95,7 +111,7 @@ class FoodController extends Controller
 
         $food->save();
 
-        return redirect()->route('home');
+        return redirect()->route('food.index');
     }
 
     public function destroy(Request $request) {

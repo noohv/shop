@@ -48,7 +48,7 @@ class OrderController extends Controller
             }
         }
         Cart::clear();
-        return redirect()->route('home');
+        return redirect()->route('food.index');
     }
 
     /**

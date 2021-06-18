@@ -14,12 +14,41 @@
                 </div>
             </div>
         </div>
+   
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 content-center">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="grid grid-cols-3 items-center justify-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div>
+                        <div>
+                            <div>
+                                <form action="{{ route('food.index') }}" method="GET" role="search">
+                
+                                    <div class="m-2 align-end">
+                                        <span>
+                                            <x-input type="text" class="form-control mr-2" name="term" placeholder="Search foods" id="term" />
+                                            <button type="submit" title="Search projects">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                                  </svg>
+                                            </button>
+                                        </span>
+                                        <a href="{{ route('food.index') }}" class=" mt-1">
+                                            <span>
+                                                <button type="button" title="Refresh page">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                                      </svg>
+                                                </button>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 items-center justify-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
                         @foreach ($foods as $food)
                             <div class="py-6 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">

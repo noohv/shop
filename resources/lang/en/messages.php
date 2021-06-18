@@ -1,56 +1,91 @@
-
-
 <?php
 return [
-    'Foods' => 'Gramatas',
-    'Filter books' => 'Filter books',
-    'Genres' => 'Genres',
-    'Authors' => 'Authors',
-    'Reserved books' => 'Reserved books',
-    'Borrowed books' => 'Borrowed books',
-    'Reader card' => 'Reader card',
-    'Log out' => 'Log out',
+    // For the Cart
+    'Cart' => 'Cart',
+    'Product' => 'Product',
+    'qty' => 'qty',
+    'Quantity' => 'Quantity',
+    'Unit Price' => 'Unit Price',
+    'Remove Item' => 'Remove Item',
+    'Cart Empty' => 'Your cart is empty! :(',
+    'Order Details' => 'Order Details',
+    'Total' => 'Total',
+    'Total Price' => 'Total Price',
+    'Procceed Checkout' => 'Procceed Checkout',
+
+    // Home
+    'Foods' => 'Foods',
+    'New' => 'New',
+    'Added To Cart' => 'Product Added To Cart!',
+    'add_cart' => 'Add to cart',
+
+    // Category
+    'Category' => 'Category',
+    'Create Category' => 'Create Category',
+
+    // Orders
+    'my_orders' => 'My Orders',
+    'My Orders' => 'My Orders',
+    'Order No' => 'Order No',
+    'Ordered At' => 'Order Time',
+    'Details' => 'Details',
+
+    'Name' => 'Name',
+    'Description' => 'Description',
+    'Food List' => 'Food List',
+    'ID' => 'ID',
+    'Price' => 'Price',
+    'Time' => 'Time',
+    'Order ID' => 'Order ID',
+    'Food ID' => 'Food ID',
+    'Orders' => 'Orders',
+    'My Business' => 'My Business',
+    'Business' => 'Business',
+    
+    
+    'Reviews' => 'Reviews',
+    'Edit your review' => 'Edit your review',
+    'Leave a review' => 'Leave a review',
+    'Rating' => 'Rating',
+    'Rate Now' => 'Rate Now',
+
+
+
+    'Users' => 'Users',
     'Create new' => 'Create new',
-    'Create a new author' => 'Create a new author',
     'First name' => 'First name',
     'Last name' => 'Last name',
-    'Country' => 'Country',
     'Create' => 'Create',
-    'Books for genre' => 'Books for genre',
-    'Books by author' => 'Books by author',
-    'Genre' => 'Genre',
-    'All books' => 'All books',
-    'Book info' => 'Book info',
-    'Year' => 'Year',
-    'Abstract' => 'Abstract',
-    'Author' => 'Author',
-    'Reserve' => 'Reserve',
-    'Unreserve' => 'Unreserve',
+    'Restaurants' => 'Restaurants',
     'Filter' => 'Filter',
     'Dashboard' => 'Dashboard',
     'Hello_user' => 'Hello, :name!',
-    'Title or portion of it' => 'Title or portion of it',
-    'Year from' => 'Year from',
-    'Year until' => 'Year until',
-    'Abstract or portion of it' => 'Abstract or portion of it',
-    'Any author' => 'Any author',
-    'Any genre' => 'Any genre',
-    'Create a new book' => 'Create a new book',
     'Title' => 'Title',
-    'Select authors' => 'Select authors',
-    'Create a new genre' => 'Create a new genre',
-    'Name' => 'Name',
     'Name_person' => 'Name',
-    'Cart' => 'Cart',
-    'There are no books reserved' => 'There are no books reserved!',
+
+
+    'Leave Review' => 'Leave Review',
+    'View Restaurant' => 'View Restaurant',
+    'Restaurant' => 'Restaurant',
+
+    'Role' => 'Role',
+    'Actions' => 'Actions',
+    'Edit' => 'Edit',
+    'Ban' => 'Ban',
+
+
+
+
+
+    'Register as Business' => 'Register as Business',
     'Register' => 'Register',
     'Email' => 'Email',
     'Password' => 'Password',
     'Remember me' => 'Remember me',
-    'Forgot your password' => 'Forgot your password?',
-    'Log in' => 'Log in',
+    'Forgot your password' => 'Forgot your password',
+    'Log In' => 'Log In',
+    'Log Out' => 'Log Out',
     'Confirm Password' => 'Confirm Password',
-    'Already registered' => 'Already registered?',
+    'Already registered' => 'Already registered',
 
 ];
-

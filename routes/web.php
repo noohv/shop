@@ -22,7 +22,8 @@ use App\Http\Controllers\OrderController;
 |
 */
 
-Route::get('/', [FoodController::class, 'index'])->name('home');
+Route::get('/', [FoodController::class, 'index'])->name('food.index');
+Route::post('/', [FoodController::class, 'index'])->name('food.index');
 
 require __DIR__.'/auth.php';
 

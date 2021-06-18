@@ -41,6 +41,14 @@ return [
     'Orders' => 'Pasūtījumi',
     'My Business' => 'Mans Bizness',
     'Business' => 'Bizness',
+    
+    
+    'Reviews' => 'Atsauksmes',
+    'Edit your review' => 'Rediģēt atsauksmi',
+    'Leave a review' => 'Atsauksme',
+    'Rating' => 'Vērtējums',
+    'Rate Now' => 'Saglabāt atsauksmi',
+
 
 
     'Users' => 'Lietotāji',
@@ -50,7 +58,6 @@ return [
     'Last name' => 'Uzvārds',
     'Create' => 'Izveidot',
     'Restaurants' => 'Restorāni',
-    'Year' => 'Gads',
     'Filter' => 'Filtrēt',
     'Dashboard' => 'Instrumentu panelis',
     'Hello_user' => 'Labdien, :name!',
@@ -61,6 +68,11 @@ return [
     'Leave Review' => 'Atsauksme',
     'View Restaurant' => 'Apskatīt',
     'Restaurant' => 'Restorāns',
+
+    'Role' => 'Loma',
+    'Actions' => 'Darbības',
+    'Edit' => 'Rediģēt',
+    'Ban' => 'Aizliegt',
 
 
 

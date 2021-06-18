@@ -29,7 +29,7 @@ class CartController extends Controller
                 'price' => $food->price,
                 'associatedModel' => $food
             ));
-            return redirect()->route('home');
+            return redirect()->route('food.index');
         }
     }
 

@@ -24,11 +24,6 @@ class RestaurantController extends Controller
         return view('restaurants',compact('restaurants','reviews'));
     }
 
-    /**
-     * Show the form for creating a new book.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $user = User::with('restaurant')->find(Auth::id());

@@ -41,7 +41,7 @@ class ReviewController extends Controller
         $restaurant->save();
 
 
-        return redirect()->route('home');
+        return redirect()->route('food.index');
     }
 
     public function update(Request $request, $id)
@@ -62,7 +62,7 @@ class ReviewController extends Controller
         $restaurant->save();
 
 
-        return redirect()->route('home');
+        return redirect()->route('food.index');
     }
 
 }
