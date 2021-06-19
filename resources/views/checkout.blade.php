@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('messages.Create Food') }}
+            {{ __('messages.Address') }}
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
 
             <!-- City -->
             <div>
-                <x-label for="city" value="City" />
+                <x-label for="city" value="{{ __('messages.City') }}" />
 
                 <x-input id="city" class="block mt-1 w-full" type="text" name="city" required autofocus
                     :value="old('city')" />
@@ -21,7 +21,7 @@
 
             <!-- Street -->
             <div>
-                <x-label for="street" value="Street" />
+                <x-label for="street" value="{{ __('messages.Street') }}" />
 
                 <x-input id="street" class="block mt-1 w-full" type="text" name="street" required
                     :value="old('street')" />
@@ -31,7 +31,7 @@
 
             <!-- Number -->
             <div>
-                <x-label for="number" value="Number" />
+                <x-label for="number" value="{{ __('messages.Number') }}" />
 
                 <x-input id="number" class="block mt-1 w-full" type="number" name="number" required :value="old('number')" />
 

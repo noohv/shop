@@ -12,6 +12,9 @@ return [
     'Total' => 'Kopā',
     'Total Price' => 'Kopā',
     'Procceed Checkout' => 'Veikt Pasūtījumu',
+    'Address' => 'Adrese',
+    'Street' => 'Iela',
+    'Number' => 'Numurs',
 
     // Home
     'Foods' => 'Ēdieni',

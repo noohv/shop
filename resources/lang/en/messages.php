@@ -12,6 +12,9 @@ return [
     'Total' => 'Total',
     'Total Price' => 'Total Price',
     'Procceed Checkout' => 'Procceed Checkout',
+    'Address' => 'Address',
+    'Street' => 'Street',
+    'Number' => 'Number',
 
     // Home
     'Foods' => 'Foods',
